@@ -15,7 +15,7 @@ struct dictioApp: App {
         WindowGroup {
 //            ContentView()
 //                .environment(\.managedObjectContext, persistenceController.container.viewContext)
-            GameView(correctWord: getWord())
+            GameView(settings: initialiseGame())
         }
     }
 }

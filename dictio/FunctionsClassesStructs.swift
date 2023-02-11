@@ -82,42 +82,46 @@ func getAllWords() -> [String] {
 
 func getWord() -> Word {
     let word = getCorrectWords().randomElement() ?? Word(word: "", definition: "")
-    
+    print("word got: \(word.word)")
     return word
 }
 
 func resetEnteredLetters() -> [String] {
-    
+
     return ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""]
 }
 
-//struct TextFieldView: View {
-//
-//    // Constants, so all "TextFields will be the same in the app"
-//    let fontSize: CGFloat
-//    let backgroundColor: Color
-//    let textColor: Color
-//
-//    // The @State Object
-//    @Binding var field: String
-//
-//    // A custom variable for a "TextField"
-//    @Binding var isHighlighted: Bool
-//
-//    init(field: Binding<String>, isHighlighted: Binding<Bool>, fontSize: CGFloat = 14, backgroundColor: Color = .blue, textColor:Color = .white) {
-//        self._field = field
-//        self._isHighlighted = isHighlighted
-//        self.fontSize = fontSize
-//        self.backgroundColor = backgroundColor
-//        self.textColor = textColor
-//    }
-//
-//    var body: some View {
-//        TextField(field, text: $field)
-//            .font(Font.system(size: fontSize))
-//            .padding()
-//            .background(RoundedRectangle(cornerRadius: 10).fill(backgroundColor))
-//            .foregroundColor(textColor)
-//            .padding()
-//    }
-//}
+class GameSettings: ObservableObject {
+    @Published var score = 0
+    @Published var correctWord: Word = Word(word: "", definition: "")
+    @Published var enteredWord = ""
+    @Published var words: [String] = []
+    @Published var visualisedWords: [String] = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
+    @Published var wordLocation: [String] = []
+    @Published var colourIndices = (0, 26, 500)
+    @Published var enteredLetters: [String]
+    @Published var gameEnded = false
+    
+    init(score: Int = 0, correctWord: Word, enteredWord: String = "", words: [String], wordLocation: [String], colourIndices: (Int, Int, Int) = (0, 26, 500), enteredLetters: [String], gameEnded: Bool = false) {
+        self.score = 0
+        self.correctWord = correctWord
+        self.enteredWord = enteredWord
+        self.words = words
+        self.wordLocation = wordLocation
+        self.colourIndices = colourIndices
+        self.enteredLetters = enteredLetters
+        self.gameEnded = gameEnded
+    }
+}
+
+func initialiseGame() -> GameSettings {
+    let correctWord = getWord()
+    let words = getWordsOf(length: correctWord.word.count)
+    var enteredLetters: [String] = []
+    for _ in 0..<correctWord.word.count {
+        enteredLetters.append("")
+    }
+    
+    print("returning game settings with word: \(correctWord.word)")
+    return GameSettings(score: 0, correctWord: correctWord, enteredWord: "", words: words, wordLocation: [correctWord.word], colourIndices: (0, 26, 500), enteredLetters: enteredLetters, gameEnded: false)
+}

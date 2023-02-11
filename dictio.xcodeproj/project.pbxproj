@@ -30,6 +30,7 @@
 		BA1688FA2997A18600A48EA8 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA1688F92997A18600A48EA8 /* StoreKit.framework */; };
 		BA1688FC2997A30E00A48EA8 /* FunctionsClassesStructs.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1688FB2997A30E00A48EA8 /* FunctionsClassesStructs.swift */; };
 		BA1688FE2997A35600A48EA8 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1688FD2997A35600A48EA8 /* GameView.swift */; };
+		BA1689002997E7BE00A48EA8 /* GameComponentViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1688FF2997E7BE00A48EA8 /* GameComponentViews.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -59,6 +60,7 @@
 		BA1688F92997A18600A48EA8 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		BA1688FB2997A30E00A48EA8 /* FunctionsClassesStructs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunctionsClassesStructs.swift; sourceTree = "<group>"; };
 		BA1688FD2997A35600A48EA8 /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
+		BA1688FF2997E7BE00A48EA8 /* GameComponentViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameComponentViews.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +98,7 @@
 				BA1688F72997A13000A48EA8 /* dictio.entitlements */,
 				BA1688C629979E4100A48EA8 /* dictioApp.swift */,
 				BA1688FD2997A35600A48EA8 /* GameView.swift */,
+				BA1688FF2997E7BE00A48EA8 /* GameComponentViews.swift */,
 				BA1688C829979E4100A48EA8 /* ContentView.swift */,
 				BA1688FB2997A30E00A48EA8 /* FunctionsClassesStructs.swift */,
 				BA1688CA29979E4200A48EA8 /* Assets.xcassets */,
@@ -234,6 +237,7 @@
 				BA1688C729979E4100A48EA8 /* dictioApp.swift in Sources */,
 				BA1688F62997A08E00A48EA8 /* SwiftyJSON.swift in Sources */,
 				BA1688D329979E4200A48EA8 /* dictio.xcdatamodeld in Sources */,
+				BA1689002997E7BE00A48EA8 /* GameComponentViews.swift in Sources */,
 				BA1688FE2997A35600A48EA8 /* GameView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
