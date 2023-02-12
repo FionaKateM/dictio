@@ -1,5 +1,5 @@
 //
-//  GameComponentViews.swift
+//  GuessedWordView.swift
 //  dictio
 //
 //  Created by Fiona Kate Morgan on 11/02/2023.
@@ -40,8 +40,6 @@ struct GuessedWordView: View {
             }
         }
         .onChange(of: settings.enteredWord) { newWord in
-            print("new word: \(newWord)")
-            print("correct word: \(settings.correctWord.word)")
             if newWord.count > settings.correctWord.word.count {
                 settings.enteredWord = String(settings.enteredWord.prefix(settings.correctWord.word.count))
             }
@@ -72,12 +70,16 @@ struct GuessedWordView: View {
             // check if answer is correct
         } else if settings.correctWord.word.lowercased() == settings.enteredWord.lowercased() {
             print("correct word")
+            settings.score += 1
             settings.visualisedWords.append(settings.enteredWord.lowercased())
             settings.visualisedWords.sort()
             settings.wordLocation.append(settings.enteredWord.lowercased())
             settings.wordLocation.sort()
             updateVisuals()
-            settings.gameEnded = true
+//            settings.gameEnded = true
+            Task {
+                    await endGame()
+                }
             
             // check if word has already been guessed
         } else if settings.visualisedWords.contains(settings.enteredWord.lowercased()) {
@@ -87,7 +89,7 @@ struct GuessedWordView: View {
             
             // valid word and not yet guessed - not correct
         } else {
-            print("word added to visualisaed words: \(settings.enteredWord)")
+            print("word added to visualised words: \(settings.enteredWord)")
             settings.score += 1
             settings.visualisedWords.append(settings.enteredWord.lowercased())
             settings.visualisedWords.sort()
@@ -176,37 +178,9 @@ struct GuessedWordView: View {
 //            }
 //        }
     }
-}
-
-struct AlphabetView: View {
-    @EnvironmentObject var settings: GameSettings
-    @FocusState private var scrollLocation: Bool
     
-    var body: some View {
-        ScrollViewReader { proxy in
-            HStack {
-                List(settings.visualisedWords, id: \.self) { word in
-                    if let index = settings.visualisedWords.firstIndex(of: word) {
-                        if word == settings.correctWord.word {
-                            Text(word)
-                                .id(index)
-                                .foregroundColor(.green)
-                                .bold()
-                            
-                        } else {
-                            Text(word)
-                                .id(index)
-                                .foregroundColor((index < settings.colourIndices.0 || index > settings.colourIndices.1) ? .gray : .black)
-                        }
-                    }
-                }
-                .padding()
-                .onChange(of: scrollLocation) { newValue in
-                    proxy.scrollTo(newValue, anchor: .center)
-                }
-            }
-        }
+    func endGame() async {
+        settings.gameEnded = true
+        await leaderboard(score: settings.score)
     }
 }
-
-

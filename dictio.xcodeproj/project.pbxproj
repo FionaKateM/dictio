@@ -30,7 +30,14 @@
 		BA1688FA2997A18600A48EA8 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA1688F92997A18600A48EA8 /* StoreKit.framework */; };
 		BA1688FC2997A30E00A48EA8 /* FunctionsClassesStructs.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1688FB2997A30E00A48EA8 /* FunctionsClassesStructs.swift */; };
 		BA1688FE2997A35600A48EA8 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1688FD2997A35600A48EA8 /* GameView.swift */; };
-		BA1689002997E7BE00A48EA8 /* GameComponentViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1688FF2997E7BE00A48EA8 /* GameComponentViews.swift */; };
+		BA1689002997E7BE00A48EA8 /* AlphabetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1688FF2997E7BE00A48EA8 /* AlphabetView.swift */; };
+		BA1689032998106900A48EA8 /* PlayerData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BA1689012998106900A48EA8 /* PlayerData.xcdatamodeld */; };
+		BA1689062998196100A48EA8 /* GuessedWordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1689052998196100A48EA8 /* GuessedWordView.swift */; };
+		BA16890A29993E2600A48EA8 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA16890929993E2600A48EA8 /* HomeView.swift */; };
+		BA16890C299945C200A48EA8 /* GameCenterHandlers.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA16890B299945C200A48EA8 /* GameCenterHandlers.swift */; };
+		BA16890E29995D5D00A48EA8 /* daily-words.json in Resources */ = {isa = PBXBuildFile; fileRef = BA16890D29995D5D00A48EA8 /* daily-words.json */; };
+		BA16891029995DC700A48EA8 /* DailyWordsArrage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA16890F29995DC700A48EA8 /* DailyWordsArrage.swift */; };
+		BA16891329996AE800A48EA8 /* daily-words-date.json in Resources */ = {isa = PBXBuildFile; fileRef = BA16891229996AE800A48EA8 /* daily-words-date.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,7 +67,15 @@
 		BA1688F92997A18600A48EA8 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		BA1688FB2997A30E00A48EA8 /* FunctionsClassesStructs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunctionsClassesStructs.swift; sourceTree = "<group>"; };
 		BA1688FD2997A35600A48EA8 /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
-		BA1688FF2997E7BE00A48EA8 /* GameComponentViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameComponentViews.swift; sourceTree = "<group>"; };
+		BA1688FF2997E7BE00A48EA8 /* AlphabetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlphabetView.swift; sourceTree = "<group>"; };
+		BA1689022998106900A48EA8 /* PlayerData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PlayerData.xcdatamodel; sourceTree = "<group>"; };
+		BA1689052998196100A48EA8 /* GuessedWordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuessedWordView.swift; sourceTree = "<group>"; };
+		BA16890829993A0C00A48EA8 /* Notes.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Notes.md; sourceTree = "<group>"; };
+		BA16890929993E2600A48EA8 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		BA16890B299945C200A48EA8 /* GameCenterHandlers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCenterHandlers.swift; sourceTree = "<group>"; };
+		BA16890D29995D5D00A48EA8 /* daily-words.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "daily-words.json"; sourceTree = "<group>"; };
+		BA16890F29995DC700A48EA8 /* DailyWordsArrage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyWordsArrage.swift; sourceTree = "<group>"; };
+		BA16891229996AE800A48EA8 /* daily-words-date.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "daily-words-date.json"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +93,7 @@
 		BA1688BA29979E4100A48EA8 = {
 			isa = PBXGroup;
 			children = (
+				BA1689012998106900A48EA8 /* PlayerData.xcdatamodeld */,
 				BA1688C529979E4100A48EA8 /* dictio */,
 				BA1688C429979E4100A48EA8 /* Products */,
 				BA1688F82997A18600A48EA8 /* Frameworks */,
@@ -95,15 +111,19 @@
 		BA1688C529979E4100A48EA8 /* dictio */ = {
 			isa = PBXGroup;
 			children = (
+				BA16890829993A0C00A48EA8 /* Notes.md */,
+				BA16890B299945C200A48EA8 /* GameCenterHandlers.swift */,
 				BA1688F72997A13000A48EA8 /* dictio.entitlements */,
 				BA1688C629979E4100A48EA8 /* dictioApp.swift */,
-				BA1688FD2997A35600A48EA8 /* GameView.swift */,
-				BA1688FF2997E7BE00A48EA8 /* GameComponentViews.swift */,
 				BA1688C829979E4100A48EA8 /* ContentView.swift */,
+				BA16890929993E2600A48EA8 /* HomeView.swift */,
+				BA1688FD2997A35600A48EA8 /* GameView.swift */,
+				BA1689072998198700A48EA8 /* ComponentViews */,
 				BA1688FB2997A30E00A48EA8 /* FunctionsClassesStructs.swift */,
 				BA1688CA29979E4200A48EA8 /* Assets.xcassets */,
 				BA1688CF29979E4200A48EA8 /* Persistence.swift */,
-				BA1688F52997A08E00A48EA8 /* SwiftyJSON.swift */,
+				BA168911299960E100A48EA8 /* Temporary pages */,
+				BA168904299814DC00A48EA8 /* External libraries */,
 				BA1688F229979FC600A48EA8 /* Words */,
 				BA1688D429979E4200A48EA8 /* Info.plist */,
 				BA1688D129979E4200A48EA8 /* dictio.xcdatamodeld */,
@@ -123,6 +143,8 @@
 		BA1688F229979FC600A48EA8 /* Words */ = {
 			isa = PBXGroup;
 			children = (
+				BA16891229996AE800A48EA8 /* daily-words-date.json */,
+				BA16890D29995D5D00A48EA8 /* daily-words.json */,
 				BA1688F329979FE200A48EA8 /* correct-words.json */,
 				BA1688DB29979FC100A48EA8 /* 4-letter-words.json */,
 				BA1688E529979FC100A48EA8 /* 5-letter-words.json */,
@@ -146,6 +168,31 @@
 				BA1688F92997A18600A48EA8 /* StoreKit.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BA168904299814DC00A48EA8 /* External libraries */ = {
+			isa = PBXGroup;
+			children = (
+				BA1688F52997A08E00A48EA8 /* SwiftyJSON.swift */,
+			);
+			path = "External libraries";
+			sourceTree = "<group>";
+		};
+		BA1689072998198700A48EA8 /* ComponentViews */ = {
+			isa = PBXGroup;
+			children = (
+				BA1688FF2997E7BE00A48EA8 /* AlphabetView.swift */,
+				BA1689052998196100A48EA8 /* GuessedWordView.swift */,
+			);
+			path = ComponentViews;
+			sourceTree = "<group>";
+		};
+		BA168911299960E100A48EA8 /* Temporary pages */ = {
+			isa = PBXGroup;
+			children = (
+				BA16890F29995DC700A48EA8 /* DailyWordsArrage.swift */,
+			);
+			path = "Temporary pages";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -213,10 +260,12 @@
 				BA1688E729979FC100A48EA8 /* 4-letter-words.json in Resources */,
 				BA1688E829979FC100A48EA8 /* 7-letter-words.json in Resources */,
 				BA1688F029979FC100A48EA8 /* 14-letter-words.json in Resources */,
+				BA16890E29995D5D00A48EA8 /* daily-words.json in Resources */,
 				BA1688F129979FC100A48EA8 /* 5-letter-words.json in Resources */,
 				BA1688F429979FE200A48EA8 /* correct-words.json in Resources */,
 				BA1688CE29979E4200A48EA8 /* Preview Assets.xcassets in Resources */,
 				BA1688EA29979FC100A48EA8 /* 8-letter-words.json in Resources */,
+				BA16891329996AE800A48EA8 /* daily-words-date.json in Resources */,
 				BA1688E629979FC100A48EA8 /* 15-letter-words.json in Resources */,
 				BA1688ED29979FC100A48EA8 /* 11-letter-words.json in Resources */,
 				BA1688EB29979FC100A48EA8 /* 10-letter-words.json in Resources */,
@@ -234,11 +283,16 @@
 				BA1688D029979E4200A48EA8 /* Persistence.swift in Sources */,
 				BA1688FC2997A30E00A48EA8 /* FunctionsClassesStructs.swift in Sources */,
 				BA1688C929979E4100A48EA8 /* ContentView.swift in Sources */,
+				BA16890C299945C200A48EA8 /* GameCenterHandlers.swift in Sources */,
+				BA1689062998196100A48EA8 /* GuessedWordView.swift in Sources */,
 				BA1688C729979E4100A48EA8 /* dictioApp.swift in Sources */,
+				BA16890A29993E2600A48EA8 /* HomeView.swift in Sources */,
 				BA1688F62997A08E00A48EA8 /* SwiftyJSON.swift in Sources */,
 				BA1688D329979E4200A48EA8 /* dictio.xcdatamodeld in Sources */,
-				BA1689002997E7BE00A48EA8 /* GameComponentViews.swift in Sources */,
+				BA1689002997E7BE00A48EA8 /* AlphabetView.swift in Sources */,
 				BA1688FE2997A35600A48EA8 /* GameView.swift in Sources */,
+				BA16891029995DC700A48EA8 /* DailyWordsArrage.swift in Sources */,
+				BA1689032998106900A48EA8 /* PlayerData.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -450,6 +504,16 @@
 			);
 			currentVersion = BA1688D229979E4200A48EA8 /* dictio.xcdatamodel */;
 			path = dictio.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+		BA1689012998106900A48EA8 /* PlayerData.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				BA1689022998106900A48EA8 /* PlayerData.xcdatamodel */,
+			);
+			currentVersion = BA1689022998106900A48EA8 /* PlayerData.xcdatamodel */;
+			path = PlayerData.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

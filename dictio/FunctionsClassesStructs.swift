@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftUI
+import GameKit
 
 func parse(json: Data) -> JSON? {
     if let parsed = try? JSON(data: json) {
@@ -28,6 +29,20 @@ struct Words : Codable {
     var words: [Word]
 }
 
+
+func getDailyWord(id: String) -> Word {
+    var word = Word(word: "", definition: "")
+    if let wordsURL = Bundle.main.url(forResource: "daily-words-date", withExtension: "json") {
+        if let data = try? Data(contentsOf: wordsURL) {
+            // we're OK to parse!
+            if let json = parse(json: data) {
+                let dict = json[0]
+                word.word = "\(dict[id])"
+            }
+        }
+    }
+    return word
+}
 
 func getCorrectWords() -> [Word] {
     var correctWords: [Word] = []
@@ -114,8 +129,15 @@ class GameSettings: ObservableObject {
     }
 }
 
-func initialiseGame() -> GameSettings {
-    let correctWord = getWord()
+func initialiseGame(id: String?) -> GameSettings {
+    var correctWord: Word = Word(word: "", definition: "")
+    if let wordID = id {
+        // TODO: add check that they have not already played the daily game
+        correctWord = getDailyWord(id: wordID)
+    } else {
+        correctWord = getWord()
+    }
+    
     let words = getWordsOf(length: correctWord.word.count)
     var enteredLetters: [String] = []
     for _ in 0..<correctWord.word.count {
@@ -125,3 +147,16 @@ func initialiseGame() -> GameSettings {
     print("returning game settings with word: \(correctWord.word)")
     return GameSettings(score: 0, correctWord: correctWord, enteredWord: "", words: words, wordLocation: [correctWord.word], colourIndices: (0, 26, 500), enteredLetters: enteredLetters, gameEnded: false)
 }
+
+
+class Player: ObservableObject {
+    @Published var player: GKPlayer
+    @Published var acheivements: [GKAchievement]
+    
+    init(player: GKPlayer, acheivements: [GKAchievement]) {
+        self.player = player
+        self.acheivements = acheivements
+    }
+}
+
+

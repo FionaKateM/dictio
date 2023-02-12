@@ -15,7 +15,8 @@ struct dictioApp: App {
         WindowGroup {
 //            ContentView()
 //                .environment(\.managedObjectContext, persistenceController.container.viewContext)
-            GameView(settings: initialiseGame())
+//            GameView(settings: initialiseGame())
+            HomeView()
         }
     }
 }
