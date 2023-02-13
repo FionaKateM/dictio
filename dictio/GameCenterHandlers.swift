@@ -8,14 +8,27 @@
 import GameKit
 
 
-func leaderboard(score: Int) async {
+
+func leaderboard(score: Int, word: String, isDaily: Bool) async {
+    if isDaily {
+        Task{
+            try await GKLeaderboard.submitScore(
+                score,
+                context: 0,
+                player: GKLocalPlayer.local,
+                leaderboardIDs: ["daily"]
+            )
+        }
+    }
+    
     Task{
         try await GKLeaderboard.submitScore(
             score,
             context: 0,
             player: GKLocalPlayer.local,
-            leaderboardIDs: ["daily"]
+            leaderboardIDs: [word.lowercased()]
         )
     }
-//    calculateAchievements()
+    
+    //    calculateAchievements()
 }

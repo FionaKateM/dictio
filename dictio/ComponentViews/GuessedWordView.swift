@@ -60,7 +60,7 @@ struct GuessedWordView: View {
     func checkWord() {
         
         // check word exists
-        if !settings.words.contains(settings.enteredWord.lowercased()) {
+        if !settings.allValidWords.contains(settings.enteredWord.lowercased()) {
             // not a valid word
             // add shake annimation
             wordInFocus = true
@@ -76,7 +76,6 @@ struct GuessedWordView: View {
             settings.wordLocation.append(settings.enteredWord.lowercased())
             settings.wordLocation.sort()
             updateVisuals()
-//            settings.gameEnded = true
             Task {
                     await endGame()
                 }
@@ -181,6 +180,6 @@ struct GuessedWordView: View {
     
     func endGame() async {
         settings.gameEnded = true
-        await leaderboard(score: settings.score)
+        await leaderboard(score: settings.score, word: settings.correctWord.word, isDaily: true)
     }
 }

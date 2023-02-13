@@ -20,22 +20,36 @@ struct HomeView: View {
             GKAccessPoint.shared.isActive = localPlayer.isAuthenticated
         }
     }
+    
+    @State var selectedWord: String = ""
     var body: some View {
         NavigationView {
             VStack {
-                NavigationLink(destination: GameView(settings: initialiseGame(id: "\(Date.now.formatted(date: .numeric, time: .omitted))"))) {
-                    Text("Play Daily Game")
+                Spacer()
+                VStack {
+                    TextField("TEST: Enter word to play", text: $selectedWord)
+                    Spacer()
+                    VStack {
+                        NavigationLink(destination: GameView(settings: initialiseGame(id: "\(Date.now.formatted(date: .numeric, time: .omitted))"))) {
+                            Text("Play Daily Game")
+                        }
+                        Text(Date.now.formatted(date: .numeric, time: .omitted))
+                    }
+                    .padding()
+                    NavigationLink(destination: GameView(settings: initialiseGame(id: nil))) {
+                        Text("Play Practice Game")
+                    }
+                    .padding()
+                    NavigationLink(destination: GameView(settings: initialiseGame(id: selectedWord.lowercased()))) {
+                        Text("Play Practice Game with selected word")
+                    }
+                    Spacer()
+                    NavigationLink(destination: LeaderboardView()) {
+                        Text("Leaderboard for test")
+                    }
+                    Spacer()
                 }
-//                NavigationLink(destination: DailyWordsArrage()) {
-//                    Text("Get words")
-//                }
-//                Button("Get daily word") {
-//                    let id = "\(Date.now.formatted(date: .numeric, time: .omitted))"
-//                    print("daily word: \(getDailyWord(id: id))")
-//                    
-//                }
-                
-                Text(Date.now.formatted(date: .numeric, time: .omitted))
+                Spacer()
             }
         }
         .navigationViewStyle(StackNavigationViewStyle())

@@ -14,8 +14,9 @@ struct GameView: View {
     
     var body: some View {
         VStack {
-            GuessedWordView()
-            AlphabetView()
+//            GuessedWordView()
+//            AlphabetView()
+            ActiveGuessView()
         }
         .environmentObject(settings)
         .navigationBarBackButtonHidden(true)

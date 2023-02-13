@@ -30,18 +30,27 @@ struct Words : Codable {
 }
 
 
-func getDailyWord(id: String) -> Word {
-    var word = Word(word: "", definition: "")
+func getDailyWord(id: String) -> Word? {
+//    var word = Word(word: "", definition: "")
     if let wordsURL = Bundle.main.url(forResource: "daily-words-date", withExtension: "json") {
         if let data = try? Data(contentsOf: wordsURL) {
             // we're OK to parse!
             if let json = parse(json: data) {
                 let dict = json[0]
-                word.word = "\(dict[id])"
+                print("returning word: \(dict[id])")
+
+                return Word(word: "\(dict[id])", definition: "")
+//                let word = "\(dict[id])"
+            } else {
+                return nil
             }
+        } else {
+            return nil
         }
+    } else {
+//        print("word from daily word func: \(word.word)")
+        return nil
     }
-    return word
 }
 
 func getCorrectWords() -> [Word] {
@@ -106,22 +115,44 @@ func resetEnteredLetters() -> [String] {
     return ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""]
 }
 
+class SessionSettings: ObservableObject {
+    @Published var player: GKLocalPlayer
+    @Published var appState: ViewState
+    
+    init(player: GKLocalPlayer, appState: ViewState) {
+        self.player = player
+        self.appState = appState
+    }
+}
+
 class GameSettings: ObservableObject {
     @Published var score = 0
     @Published var correctWord: Word = Word(word: "", definition: "")
     @Published var enteredWord = ""
-    @Published var words: [String] = []
+    
+    // dictionary of accepted words
+    @Published var allWords: [String] = []
+    
+    // starts the same as the dictionary but removes words outside boundaries
+    @Published var allValidWords: [String] = []
+    
+    // all guessed words
+    @Published var allGuessedWords: [String] = []
+    
     @Published var visualisedWords: [String] = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
     @Published var wordLocation: [String] = []
     @Published var colourIndices = (0, 26, 500)
     @Published var enteredLetters: [String]
     @Published var gameEnded = false
+    @Published var enteredWordState: EnteredWordState = .activeEntering
+    @Published var wordBoundaries: (String, String) = ("","")
     
-    init(score: Int = 0, correctWord: Word, enteredWord: String = "", words: [String], wordLocation: [String], colourIndices: (Int, Int, Int) = (0, 26, 500), enteredLetters: [String], gameEnded: Bool = false) {
+    init(score: Int = 0, correctWord: Word, enteredWord: String = "", allWords: [String], allValidWords: [String], wordLocation: [String], colourIndices: (Int, Int, Int) = (0, 26, 500), enteredLetters: [String], gameEnded: Bool = false) {
         self.score = 0
         self.correctWord = correctWord
         self.enteredWord = enteredWord
-        self.words = words
+        self.allWords = allWords
+        self.allValidWords = allValidWords
         self.wordLocation = wordLocation
         self.colourIndices = colourIndices
         self.enteredLetters = enteredLetters
@@ -132,8 +163,15 @@ class GameSettings: ObservableObject {
 func initialiseGame(id: String?) -> GameSettings {
     var correctWord: Word = Word(word: "", definition: "")
     if let wordID = id {
+        print("getting daily word")
         // TODO: add check that they have not already played the daily game
-        correctWord = getDailyWord(id: wordID)
+        if let word = getDailyWord(id: wordID) {
+            correctWord = word
+        } else {
+            print("word does equals speechmarks")
+            correctWord = Word(word: wordID, definition: "")
+        }
+        
     } else {
         correctWord = getWord()
     }
@@ -145,18 +183,22 @@ func initialiseGame(id: String?) -> GameSettings {
     }
     
     print("returning game settings with word: \(correctWord.word)")
-    return GameSettings(score: 0, correctWord: correctWord, enteredWord: "", words: words, wordLocation: [correctWord.word], colourIndices: (0, 26, 500), enteredLetters: enteredLetters, gameEnded: false)
+    return GameSettings(score: 0, correctWord: correctWord, enteredWord: "", allWords: words, allValidWords: words, wordLocation: [correctWord.word], colourIndices: (0, 26, 500), enteredLetters: enteredLetters, gameEnded: false)
 }
 
-
-class Player: ObservableObject {
-    @Published var player: GKPlayer
-    @Published var acheivements: [GKAchievement]
-    
-    init(player: GKPlayer, acheivements: [GKAchievement]) {
-        self.player = player
-        self.acheivements = acheivements
-    }
+enum EnteredWordState {
+    case correct
+    case newTopBoundary
+    case newBottomBoundary
+    case invalidWord
+    case invalidOutsideBoundaries
+    case activeEntering
 }
 
+enum ViewState {
+    case home
+    case game
+    case leaderboard
+    case stats
+}
 
