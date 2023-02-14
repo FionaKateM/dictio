@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		BA1688C729979E4100A48EA8 /* dictioApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1688C629979E4100A48EA8 /* dictioApp.swift */; };
-		BA1688C929979E4100A48EA8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1688C829979E4100A48EA8 /* ContentView.swift */; };
 		BA1688CB29979E4200A48EA8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA1688CA29979E4200A48EA8 /* Assets.xcassets */; };
 		BA1688CE29979E4200A48EA8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA1688CD29979E4200A48EA8 /* Preview Assets.xcassets */; };
 		BA1688D029979E4200A48EA8 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1688CF29979E4200A48EA8 /* Persistence.swift */; };
@@ -30,22 +29,25 @@
 		BA1688FA2997A18600A48EA8 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA1688F92997A18600A48EA8 /* StoreKit.framework */; };
 		BA1688FC2997A30E00A48EA8 /* FunctionsClassesStructs.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1688FB2997A30E00A48EA8 /* FunctionsClassesStructs.swift */; };
 		BA1688FE2997A35600A48EA8 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1688FD2997A35600A48EA8 /* GameView.swift */; };
-		BA1689002997E7BE00A48EA8 /* AlphabetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1688FF2997E7BE00A48EA8 /* AlphabetView.swift */; };
 		BA1689032998106900A48EA8 /* PlayerData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BA1689012998106900A48EA8 /* PlayerData.xcdatamodeld */; };
-		BA1689062998196100A48EA8 /* GuessedWordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1689052998196100A48EA8 /* GuessedWordView.swift */; };
 		BA16890A29993E2600A48EA8 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA16890929993E2600A48EA8 /* HomeView.swift */; };
 		BA16890C299945C200A48EA8 /* GameCenterHandlers.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA16890B299945C200A48EA8 /* GameCenterHandlers.swift */; };
 		BA16890E29995D5D00A48EA8 /* daily-words.json in Resources */ = {isa = PBXBuildFile; fileRef = BA16890D29995D5D00A48EA8 /* daily-words.json */; };
 		BA16891029995DC700A48EA8 /* DailyWordsArrage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA16890F29995DC700A48EA8 /* DailyWordsArrage.swift */; };
 		BA16891329996AE800A48EA8 /* daily-words-date.json in Resources */ = {isa = PBXBuildFile; fileRef = BA16891229996AE800A48EA8 /* daily-words-date.json */; };
-		BA168915299A594E00A48EA8 /* ActiveGuessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA168914299A594E00A48EA8 /* ActiveGuessView.swift */; };
+		BA168915299A594E00A48EA8 /* ActiveGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA168914299A594E00A48EA8 /* ActiveGameView.swift */; };
 		BA168917299A95F700A48EA8 /* LeaderboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA168916299A95F700A48EA8 /* LeaderboardView.swift */; };
+		BA168919299AB17100A48EA8 /* InitialisationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA168918299AB17100A48EA8 /* InitialisationView.swift */; };
+		BA168920299AB6C400A48EA8 /* StatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA16891F299AB6C400A48EA8 /* StatsView.swift */; };
+		BA168922299BD1A200A48EA8 /* SessionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA168921299BD1A200A48EA8 /* SessionView.swift */; };
+		BA168924299BD60200A48EA8 /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA168923299BD60200A48EA8 /* State.swift */; };
+		BA168926299BD67900A48EA8 /* GameSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA168925299BD67900A48EA8 /* GameSettings.swift */; };
+		BA168928299BD69C00A48EA8 /* SessionSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA168927299BD69C00A48EA8 /* SessionSettings.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		BA1688C329979E4100A48EA8 /* dictio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = dictio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA1688C629979E4100A48EA8 /* dictioApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dictioApp.swift; sourceTree = "<group>"; };
-		BA1688C829979E4100A48EA8 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		BA1688CA29979E4200A48EA8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BA1688CD29979E4200A48EA8 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		BA1688CF29979E4200A48EA8 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
@@ -69,17 +71,21 @@
 		BA1688F92997A18600A48EA8 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		BA1688FB2997A30E00A48EA8 /* FunctionsClassesStructs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunctionsClassesStructs.swift; sourceTree = "<group>"; };
 		BA1688FD2997A35600A48EA8 /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
-		BA1688FF2997E7BE00A48EA8 /* AlphabetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlphabetView.swift; sourceTree = "<group>"; };
 		BA1689022998106900A48EA8 /* PlayerData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PlayerData.xcdatamodel; sourceTree = "<group>"; };
-		BA1689052998196100A48EA8 /* GuessedWordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuessedWordView.swift; sourceTree = "<group>"; };
 		BA16890829993A0C00A48EA8 /* Notes.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Notes.md; sourceTree = "<group>"; };
 		BA16890929993E2600A48EA8 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		BA16890B299945C200A48EA8 /* GameCenterHandlers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCenterHandlers.swift; sourceTree = "<group>"; };
 		BA16890D29995D5D00A48EA8 /* daily-words.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "daily-words.json"; sourceTree = "<group>"; };
 		BA16890F29995DC700A48EA8 /* DailyWordsArrage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyWordsArrage.swift; sourceTree = "<group>"; };
 		BA16891229996AE800A48EA8 /* daily-words-date.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "daily-words-date.json"; sourceTree = "<group>"; };
-		BA168914299A594E00A48EA8 /* ActiveGuessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveGuessView.swift; sourceTree = "<group>"; };
+		BA168914299A594E00A48EA8 /* ActiveGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveGameView.swift; sourceTree = "<group>"; };
 		BA168916299A95F700A48EA8 /* LeaderboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardView.swift; sourceTree = "<group>"; };
+		BA168918299AB17100A48EA8 /* InitialisationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialisationView.swift; sourceTree = "<group>"; };
+		BA16891F299AB6C400A48EA8 /* StatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsView.swift; sourceTree = "<group>"; };
+		BA168921299BD1A200A48EA8 /* SessionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionView.swift; sourceTree = "<group>"; };
+		BA168923299BD60200A48EA8 /* State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = State.swift; sourceTree = "<group>"; };
+		BA168925299BD67900A48EA8 /* GameSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSettings.swift; sourceTree = "<group>"; };
+		BA168927299BD69C00A48EA8 /* SessionSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionSettings.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,12 +125,11 @@
 				BA16890B299945C200A48EA8 /* GameCenterHandlers.swift */,
 				BA1688F72997A13000A48EA8 /* dictio.entitlements */,
 				BA1688C629979E4100A48EA8 /* dictioApp.swift */,
-				BA1688C829979E4100A48EA8 /* ContentView.swift */,
-				BA16890929993E2600A48EA8 /* HomeView.swift */,
-				BA1688FD2997A35600A48EA8 /* GameView.swift */,
-				BA168916299A95F700A48EA8 /* LeaderboardView.swift */,
-				BA1689072998198700A48EA8 /* ComponentViews */,
+				BA16891E299AB69B00A48EA8 /* ParentView */,
+				BA16891D299AB67C00A48EA8 /* HomeView */,
+				BA16891C299AB67600A48EA8 /* GameView */,
 				BA1688FB2997A30E00A48EA8 /* FunctionsClassesStructs.swift */,
+				BA168929299BDF1400A48EA8 /* Settings and State */,
 				BA1688CA29979E4200A48EA8 /* Assets.xcassets */,
 				BA1688CF29979E4200A48EA8 /* Persistence.swift */,
 				BA168911299960E100A48EA8 /* Temporary pages */,
@@ -183,22 +188,50 @@
 			path = "External libraries";
 			sourceTree = "<group>";
 		};
-		BA1689072998198700A48EA8 /* ComponentViews */ = {
-			isa = PBXGroup;
-			children = (
-				BA1688FF2997E7BE00A48EA8 /* AlphabetView.swift */,
-				BA1689052998196100A48EA8 /* GuessedWordView.swift */,
-				BA168914299A594E00A48EA8 /* ActiveGuessView.swift */,
-			);
-			path = ComponentViews;
-			sourceTree = "<group>";
-		};
 		BA168911299960E100A48EA8 /* Temporary pages */ = {
 			isa = PBXGroup;
 			children = (
 				BA16890F29995DC700A48EA8 /* DailyWordsArrage.swift */,
 			);
 			path = "Temporary pages";
+			sourceTree = "<group>";
+		};
+		BA16891C299AB67600A48EA8 /* GameView */ = {
+			isa = PBXGroup;
+			children = (
+				BA1688FD2997A35600A48EA8 /* GameView.swift */,
+				BA168914299A594E00A48EA8 /* ActiveGameView.swift */,
+			);
+			path = GameView;
+			sourceTree = "<group>";
+		};
+		BA16891D299AB67C00A48EA8 /* HomeView */ = {
+			isa = PBXGroup;
+			children = (
+				BA16890929993E2600A48EA8 /* HomeView.swift */,
+				BA16891F299AB6C400A48EA8 /* StatsView.swift */,
+				BA168916299A95F700A48EA8 /* LeaderboardView.swift */,
+			);
+			path = HomeView;
+			sourceTree = "<group>";
+		};
+		BA16891E299AB69B00A48EA8 /* ParentView */ = {
+			isa = PBXGroup;
+			children = (
+				BA168918299AB17100A48EA8 /* InitialisationView.swift */,
+				BA168921299BD1A200A48EA8 /* SessionView.swift */,
+			);
+			path = ParentView;
+			sourceTree = "<group>";
+		};
+		BA168929299BDF1400A48EA8 /* Settings and State */ = {
+			isa = PBXGroup;
+			children = (
+				BA168925299BD67900A48EA8 /* GameSettings.swift */,
+				BA168927299BD69C00A48EA8 /* SessionSettings.swift */,
+				BA168923299BD60200A48EA8 /* State.swift */,
+			);
+			path = "Settings and State";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -287,17 +320,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				BA1688D029979E4200A48EA8 /* Persistence.swift in Sources */,
+				BA168926299BD67900A48EA8 /* GameSettings.swift in Sources */,
 				BA1688FC2997A30E00A48EA8 /* FunctionsClassesStructs.swift in Sources */,
-				BA1688C929979E4100A48EA8 /* ContentView.swift in Sources */,
 				BA16890C299945C200A48EA8 /* GameCenterHandlers.swift in Sources */,
-				BA1689062998196100A48EA8 /* GuessedWordView.swift in Sources */,
+				BA168919299AB17100A48EA8 /* InitialisationView.swift in Sources */,
+				BA168928299BD69C00A48EA8 /* SessionSettings.swift in Sources */,
 				BA1688C729979E4100A48EA8 /* dictioApp.swift in Sources */,
-				BA168915299A594E00A48EA8 /* ActiveGuessView.swift in Sources */,
+				BA168915299A594E00A48EA8 /* ActiveGameView.swift in Sources */,
 				BA16890A29993E2600A48EA8 /* HomeView.swift in Sources */,
 				BA1688F62997A08E00A48EA8 /* SwiftyJSON.swift in Sources */,
 				BA1688D329979E4200A48EA8 /* dictio.xcdatamodeld in Sources */,
 				BA168917299A95F700A48EA8 /* LeaderboardView.swift in Sources */,
-				BA1689002997E7BE00A48EA8 /* AlphabetView.swift in Sources */,
+				BA168922299BD1A200A48EA8 /* SessionView.swift in Sources */,
+				BA168920299AB6C400A48EA8 /* StatsView.swift in Sources */,
+				BA168924299BD60200A48EA8 /* State.swift in Sources */,
 				BA1688FE2997A35600A48EA8 /* GameView.swift in Sources */,
 				BA16891029995DC700A48EA8 /* DailyWordsArrage.swift in Sources */,
 				BA1689032998106900A48EA8 /* PlayerData.xcdatamodeld in Sources */,

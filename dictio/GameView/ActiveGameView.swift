@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ActiveGuessView: View {
+struct ActiveGameView: View {
     
     @EnvironmentObject var settings: GameSettings
     @FocusState private var wordInFocus: Bool

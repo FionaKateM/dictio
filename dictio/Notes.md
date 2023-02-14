@@ -1,4 +1,17 @@
-#  <#Title#>
+#  Views
+**Initialisation View**
+Loads player data
+
+**Session View**
+Decides which view to show (home, game) based on whether there is an active game
+
+**Home View**
+(When game is not active)
+Gives the player their playing options, profile and stats
+
+**Game View**
+(When game is active)
+Allows the player to play the game, and presents the results at the end, before returning to home view
 
 # Data types
 

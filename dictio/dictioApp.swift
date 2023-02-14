@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import GameKit
 
 @main
 struct dictioApp: App {
@@ -13,10 +14,7 @@ struct dictioApp: App {
 
     var body: some Scene {
         WindowGroup {
-//            ContentView()
-//                .environment(\.managedObjectContext, persistenceController.container.viewContext)
-//            GameView(settings: initialiseGame())
-            HomeView()
+            InitialisationView()
         }
     }
 }

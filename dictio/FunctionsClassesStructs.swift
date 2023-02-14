@@ -115,63 +115,35 @@ func resetEnteredLetters() -> [String] {
     return ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""]
 }
 
-class SessionSettings: ObservableObject {
-    @Published var player: GKLocalPlayer
-    @Published var appState: ViewState
-    
-    init(player: GKLocalPlayer, appState: ViewState) {
-        self.player = player
-        self.appState = appState
-    }
-}
-
-class GameSettings: ObservableObject {
-    @Published var score = 0
-    @Published var correctWord: Word = Word(word: "", definition: "")
-    @Published var enteredWord = ""
-    
-    // dictionary of accepted words
-    @Published var allWords: [String] = []
-    
-    // starts the same as the dictionary but removes words outside boundaries
-    @Published var allValidWords: [String] = []
-    
-    // all guessed words
-    @Published var allGuessedWords: [String] = []
-    
-    @Published var visualisedWords: [String] = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
-    @Published var wordLocation: [String] = []
-    @Published var colourIndices = (0, 26, 500)
-    @Published var enteredLetters: [String]
-    @Published var gameEnded = false
-    @Published var enteredWordState: EnteredWordState = .activeEntering
-    @Published var wordBoundaries: (String, String) = ("","")
-    
-    init(score: Int = 0, correctWord: Word, enteredWord: String = "", allWords: [String], allValidWords: [String], wordLocation: [String], colourIndices: (Int, Int, Int) = (0, 26, 500), enteredLetters: [String], gameEnded: Bool = false) {
-        self.score = 0
-        self.correctWord = correctWord
-        self.enteredWord = enteredWord
-        self.allWords = allWords
-        self.allValidWords = allValidWords
-        self.wordLocation = wordLocation
-        self.colourIndices = colourIndices
-        self.enteredLetters = enteredLetters
-        self.gameEnded = gameEnded
-    }
-}
-
-func initialiseGame(id: String?) -> GameSettings {
+func initialiseGame(date: String?, testWord: String?, wordLength: Int?) -> GameSettings {
     var correctWord: Word = Word(word: "", definition: "")
-    if let wordID = id {
+    if let dateID = date {
         print("getting daily word")
         // TODO: add check that they have not already played the daily game
-        if let word = getDailyWord(id: wordID) {
+        if let word = getDailyWord(id: dateID) {
             correctWord = word
-        } else {
-            print("word does equals speechmarks")
-            correctWord = Word(word: wordID, definition: "")
         }
         
+    } else if let testWord = testWord {
+        print("word does equals speechmarks")
+        correctWord = Word(word: testWord.lowercased(), definition: "")
+    } else if let length = wordLength {
+        // get word of specific length from correct words
+        // TODO - fix this
+        switch length {
+        case 4:
+            correctWord = Word(word: "test", definition: "xxx")
+        case 5:
+            correctWord = Word(word: "hello", definition: "xxx")
+        case 6:
+            correctWord = Word(word: "abacus", definition: "xxx")
+        case 7:
+            correctWord = Word(word: "abysmal", definition: "xxx")
+        case 8:
+            correctWord = Word(word: "absolute", definition: "xxx")
+        default:
+            correctWord = Word(word: "unbelievable", definition: "xxx")
+        }
     } else {
         correctWord = getWord()
     }
@@ -183,7 +155,7 @@ func initialiseGame(id: String?) -> GameSettings {
     }
     
     print("returning game settings with word: \(correctWord.word)")
-    return GameSettings(score: 0, correctWord: correctWord, enteredWord: "", allWords: words, allValidWords: words, wordLocation: [correctWord.word], colourIndices: (0, 26, 500), enteredLetters: enteredLetters, gameEnded: false)
+    return GameSettings(score: 0, correctWord: correctWord, enteredWord: "", allWords: words, allValidWords: words, wordLocation: [correctWord.word], colourIndices: (0, 26, 500), enteredLetters: enteredLetters, gameEnded: false, gameState: .game)
 }
 
 enum EnteredWordState {
@@ -195,10 +167,10 @@ enum EnteredWordState {
     case activeEntering
 }
 
-enum ViewState {
-    case home
-    case game
-    case leaderboard
-    case stats
-}
+
+
+
+
+
+
 

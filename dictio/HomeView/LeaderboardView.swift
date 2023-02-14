@@ -8,11 +8,18 @@
 import SwiftUI
 import GameKit
 
+// leaderboard View presents the leaderboard for a specific word or for the daily game
+// It is either accessed by the player through the stats screen, or presented at the end of completing a game
+// If a word is passed into the 'leaderboardWord' variable then it will present the leaderboard for that word, otherwise it will present the daily leaderboard
+
 struct LeaderboardView: View {
+    
+    @State var leaderboardWord: String?
     @State var leaderboardEntries: [GKLeaderboard.Entry] = []
+    
     var body: some View {
         VStack {
-            Text("lemon leaderboard")
+            Text("\(leaderboardWord ?? "daily") leaderboard")
             List((0..<leaderboardEntries.count), id: \.self) { i in
 //            ForEach((0..<leaderboardEntries.count), id: \.self) {i in
                 if let entry = leaderboardEntries[i] {
@@ -35,15 +42,12 @@ struct LeaderboardView: View {
         }
         .onAppear() {
             Task {
-                await loadLeaderboard(word: "lemon")
+                await loadLeaderboard(word: leaderboardWord?.lowercased() ?? "daily")
             }
         }
     }
     
     func loadLeaderboard(word: String) async {
-        
-        //    playersList.removeAll()
-        print("leaderboards")
         Task{
             var playersListTemp : [GKLeaderboard.Entry] = []
             let leaderboards = try await GKLeaderboard.loadLeaderboards(IDs: [word])
@@ -53,7 +57,6 @@ struct LeaderboardView: View {
                 
                 if allPlayers.1.count > 0 {
                     for player in allPlayers.1 {
-                                            print("name: \(player.player.displayName), score: \(player.score)")
                         playersListTemp.append(player)
                     }
                     
@@ -62,9 +65,7 @@ struct LeaderboardView: View {
                     }
                 }
             }
-            //        playersList = playersListTemp
             if playersListTemp.count > 0 {
-                print("players list temp contains entries")
                 leaderboardEntries = playersListTemp
             }
         }
