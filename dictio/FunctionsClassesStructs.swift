@@ -117,10 +117,12 @@ func resetEnteredLetters() -> [String] {
 
 func initialiseGame(date: String?, testWord: String?, wordLength: Int?) -> GameSettings {
     var correctWord: Word = Word(word: "", definition: "")
+    var dailyID: Int?
     if let dateID = date {
         print("getting daily word")
         // TODO: add check that they have not already played the daily game
         if let word = getDailyWord(id: dateID) {
+            dailyID = 5
             correctWord = word
         }
         
@@ -155,7 +157,13 @@ func initialiseGame(date: String?, testWord: String?, wordLength: Int?) -> GameS
     }
     
     print("returning game settings with word: \(correctWord.word)")
-    return GameSettings(score: 0, correctWord: correctWord, enteredWord: "", allWords: words, allValidWords: words, wordLocation: [correctWord.word], colourIndices: (0, 26, 500), enteredLetters: enteredLetters, gameEnded: false, gameState: .game)
+    let gameSettings = GameSettings(score: 0, correctWord: correctWord, enteredWord: "", allWords: words, allValidWords: words, wordLocation: [correctWord.word], colourIndices: (0, 26, 500), enteredLetters: enteredLetters, gameState: .game, started: Date.now)
+    
+    if dailyID != nil {
+        gameSettings.dailyID = dailyID
+    }
+    
+    return gameSettings
 }
 
 enum EnteredWordState {

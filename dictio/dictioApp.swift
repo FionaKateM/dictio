@@ -10,11 +10,13 @@ import GameKit
 
 @main
 struct dictioApp: App {
-    let persistenceController = PersistenceController.shared
+//    let persistenceController = PersistenceController.shared
+    @StateObject private var dataController = DataController()
 
     var body: some Scene {
         WindowGroup {
             InitialisationView()
+                .environment(\.managedObjectContext, dataController.container.viewContext)
         }
     }
 }

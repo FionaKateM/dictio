@@ -1,3 +1,15 @@
+# TODO
+- Look at the smallest supported phone size and fix the game view, limiting the number of letters if needed
+- Add core data capabilities
+- Limit daily game to once a day
+- Create a list of words that are not down to be daily words (or restrict which words are used for practice to previous words and those 6 months in advance, and put in a way to handle the daily games when a player has already done the word in practice)
+- Design home screen
+- Design stats screen
+- Fix leaderboard issue
+- Set up in-game currency
+- Prevent practice is coins = 0, increase coins by 1 each daily game played
+- sort out drop in screen when returning from leaderbaordg
+
 #  Views
 **Initialisation View**
 Loads player data
@@ -24,6 +36,8 @@ Game:
 
 Daily game (game plus)
 - Daily game number (eg. #102)
+
+
 
 # Acheivements
 - Daily game streak -

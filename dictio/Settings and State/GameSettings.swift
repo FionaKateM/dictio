@@ -13,6 +13,7 @@ class GameSettings: ObservableObject {
     @Published var score = 0
     @Published var correctWord: Word = Word(word: "", definition: "")
     @Published var enteredWord = ""
+    @Published var dailyID: Int?
     
     // dictionary of accepted words
     @Published var allWords: [String] = []
@@ -27,12 +28,15 @@ class GameSettings: ObservableObject {
     @Published var wordLocation: [String] = []
     @Published var colourIndices = (0, 26, 500)
     @Published var enteredLetters: [String]
-    @Published var gameEnded = false
+//    @Published var gameEnded = false
     @Published var enteredWordState: EnteredWordState = .activeEntering
     @Published var wordBoundaries: (String, String) = ("","")
     @Published var gameState: GameState
     
-    init(score: Int = 0, correctWord: Word, enteredWord: String = "", allWords: [String], allValidWords: [String], wordLocation: [String], colourIndices: (Int, Int, Int) = (0, 26, 500), enteredLetters: [String], gameEnded: Bool = false, gameState: GameState) {
+    // timestamps
+    @Published var started: Date
+    
+    init(score: Int = 0, correctWord: Word, enteredWord: String = "", allWords: [String], allValidWords: [String], wordLocation: [String], colourIndices: (Int, Int, Int) = (0, 26, 500), enteredLetters: [String], gameState: GameState, started: Date) {
         self.score = 0
         self.correctWord = correctWord
         self.enteredWord = enteredWord
@@ -41,7 +45,7 @@ class GameSettings: ObservableObject {
         self.wordLocation = wordLocation
         self.colourIndices = colourIndices
         self.enteredLetters = enteredLetters
-        self.gameEnded = gameEnded
         self.gameState = gameState
+        self.started = started
     }
 }

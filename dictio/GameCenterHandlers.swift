@@ -26,7 +26,7 @@ func leaderboard(score: Int, word: String, isDaily: Bool) async {
             score,
             context: 0,
             player: GKLocalPlayer.local,
-            leaderboardIDs: [word.lowercased()]
+            leaderboardIDs: ["word.\(word.lowercased())"]
         )
     }
     

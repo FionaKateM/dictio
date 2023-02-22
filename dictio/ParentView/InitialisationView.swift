@@ -25,7 +25,7 @@ struct InitialisationView: View {
                     }
                 }
         } else {
-            SessionView(sessionSettings: SessionSettings(appState: .home, player: localPlayer, gameSettings: nil))
+            SessionView(sessionSettings: SessionSettings(appState: .home, player: localPlayer, gameSettings: nil, coins: retrieveCoins(), playedGames: []))
         }
     }
     
@@ -35,9 +35,13 @@ struct InitialisationView: View {
                 print(error?.localizedDescription ?? "")
                 return
             }
-            GKAccessPoint.shared.isActive = localPlayer.isAuthenticated
+//            GKAccessPoint.shared.isActive = localPlayer.isAuthenticated
             playerAuthenticated = true
         }
+    }
+    
+    func retrieveCoins() -> Int {
+        return 1
     }
     
 }

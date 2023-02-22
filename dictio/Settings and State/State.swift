@@ -12,10 +12,11 @@ enum SessionState {
     case game
     case stats
     case profile
+    case coins
 }
 
 enum GameState {
     case game
-    case stats
+    case ended
 }
 
