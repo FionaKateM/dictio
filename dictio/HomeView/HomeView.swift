@@ -40,7 +40,7 @@ struct HomeView: View {
                 Button {
                     sessionSettings.appState = .coins
                 } label: {
-                    Text("\(sessionSettings.coins)")
+                    Text("\(sessionSettings.playerData.coins)")
                         .padding()
                         .foregroundColor(.white)
                         .background(.blue)
@@ -97,7 +97,7 @@ struct HomeView: View {
     }
     
     func checkIfPracticeAllowed() {
-        if sessionSettings.coins > 0 {
+        if sessionSettings.playerData.coins > 0 {
             practiceGameDisabled = false
         } else {
             practiceGameDisabled = true
@@ -114,15 +114,15 @@ struct HomeView: View {
         sessionSettings.gameSettings = initialiseGame(date: "\(Date.now.formatted(date: .numeric, time: .omitted))")
         
         // add 1 to coins for playing a daily game
-        sessionSettings.coins += 1
+        sessionSettings.playerData.coins += 1
 
         dailyGameDisabled = true
         sessionSettings.appState = .game
     }
     
     func playPracticeGame() {
-        if sessionSettings.coins >= 1 {
-            sessionSettings.coins -= 1
+        if sessionSettings.playerData.coins >= 1 {
+            sessionSettings.playerData.coins -= 1
             sessionSettings.gameSettings = initialiseGame(date: nil)
             sessionSettings.appState = .game
         } else {

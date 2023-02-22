@@ -15,6 +15,10 @@ import GameKit
 struct InitialisationView: View {
     @State var localPlayer = GKLocalPlayer.local
     @State var playerAuthenticated = false
+    @Environment(\.managedObjectContext) var moc
+    
+    @FetchRequest(sortDescriptors: []) var games: FetchedResults<Game>
+    @FetchRequest(sortDescriptors: []) var playerData: FetchedResults<Player>
     
     var body: some View {
         if !playerAuthenticated {
@@ -22,12 +26,14 @@ struct InitialisationView: View {
                 .onAppear() {
                     Task {
                         authenticateUser()
+                        checkCoreData()
                     }
                 }
         } else {
-            SessionView(sessionSettings: SessionSettings(appState: .home, player: localPlayer, gameSettings: nil, coins: retrieveCoins(), playedGames: []))
+            SessionView(sessionSettings: SessionSettings(appState: .home, player: localPlayer, gameSettings: nil, playedGames: convertFetchedResultsGames(), playerData: convertFetchedResultsPlayerData()))
         }
     }
+    
     
     func authenticateUser() {
         localPlayer.authenticateHandler = { vc, error in
@@ -35,13 +41,42 @@ struct InitialisationView: View {
                 print(error?.localizedDescription ?? "")
                 return
             }
-//            GKAccessPoint.shared.isActive = localPlayer.isAuthenticated
+            //            GKAccessPoint.shared.isActive = localPlayer.isAuthenticated
             playerAuthenticated = true
         }
     }
     
-    func retrieveCoins() -> Int {
-        return 1
+    func checkCoreData() {
+        if playerData.count == 0 {
+            // no player data, needs to be created
+            let player = Player(context: moc)
+            
+            player.coins = 5
+            player.lastLogin = Date.now
+            
+            try? moc.save()
+        }
+    }
+    
+    func convertFetchedResultsGames() -> [Game] {
+        var gamesArray: [Game] = []
+        for game in games {
+            gamesArray.append(game)
+        }
+        return gamesArray
+    }
+    
+    func convertFetchedResultsPlayerData() -> Player {
+        if playerData.count > 0 {
+            return playerData[0]
+        } else {
+            let player = Player(context: moc)
+            
+            player.coins = 10
+            player.lastLogin = Date.now
+            
+            return player
+        }
     }
     
 }

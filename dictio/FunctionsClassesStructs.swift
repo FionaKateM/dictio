@@ -28,8 +28,12 @@ func getDailyWord(date: String) -> Word? {
     if let wordsURL = Bundle.main.url(forResource: "daily-words", withExtension: "json") {
         if let data = try? Data(contentsOf: wordsURL) {
             if let words = parseWordsFrom(json: data) {
-                let word = words.filter({ $0.date == date})
-                return word[0]
+                let dailyWordArray = words.filter({ $0.date == date})
+                if dailyWordArray.count > 0 {
+                    return dailyWordArray[0]
+                } else {
+                    return nil
+                }
             } else {
                 return nil
             }
@@ -42,7 +46,6 @@ func getDailyWord(date: String) -> Word? {
 }
 
 func parseWordsFrom(json: Data) -> [Word]? {
-    print("parse")
     let decoder = JSONDecoder()
     
     if let words = try? decoder.decode([Word].self, from: json) {
@@ -68,8 +71,6 @@ func getWords(fileName: String) -> [Word] {
 func parseStrings(json: Data) -> JSON? {
     if let parsed = try? JSON(data: json) {
         return parsed
-    } else {
-        print(json)
     }
     return nil
 }
@@ -77,7 +78,6 @@ func parseStrings(json: Data) -> JSON? {
 // gets all words of a specific length that will be accepted in the game
 func getWordsOf(length: Int) -> [String] {
     var allWords: [String] = []
-    let decoder = JSONDecoder()
     
     if let wordsURL = Bundle.main.url(forResource: "\(length)-letter-words", withExtension: "json") {
         if let data = try? Data(contentsOf: wordsURL) {
@@ -90,12 +90,17 @@ func getWordsOf(length: Int) -> [String] {
             }
         }
     }
-    print("all words: \(allWords)")
     return allWords
 }
 
 func getPracticeWord() -> Word {
-    return Word(word: "word", definition: "xxx")
+    let words = getWords(fileName: "correct-words")
+    if let random = words.randomElement() {
+        return random
+    } else {
+        print("couldn't get random word")
+        return Word(word: "word", definition: "xxx")
+    }
 }
 
 func initialiseGame(date: String?) -> GameSettings {

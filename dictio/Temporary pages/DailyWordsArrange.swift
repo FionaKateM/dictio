@@ -26,15 +26,15 @@ struct DailyWordsArrange: View {
                 getCorrectWords()
             }
         }
-        .onAppear() {
-            words = getDailyWords()
-        }
+//        .onAppear() {
+//            words = getDailyWords()
+//        }
     }
     
     func setDailyWords(startingDate: Date) {
         var date = startingDate
         var id = 1
-        var words = getCorrectWords().shuffled()
+        let words = getCorrectWords().shuffled()
         var tempArray: [Word] = []
         for word in words {
             var tempWord = word
@@ -54,41 +54,39 @@ struct DailyWordsArrange: View {
     }
     
     
-    func getDailyWords() -> [Word] {
-        var correctWords: [Word] = getCorrectWords()
-        if let wordsURL = Bundle.main.url(forResource: "correct-words", withExtension: "json") {
-            //        print("here 1")
-            if let data = try? Data(contentsOf: wordsURL) {
-                // we're OK to parse!
-                //            print("here 2")
-//                if let json = parse(json: data) {
-//                    //                print("here 3")
-//                    for item in json {
-//                        let word = Word(word: "\(item.1["word"].rawValue)", definition: "\(item.1["definition"].rawValue)")
-//                        //                    correctWords.append("\(item.1["word"].rawValue)")
-//                        correctWords.append(word)
-//                        //                    print(word)
-//                    }
-//                }
-            }
-        }
-        
-        return correctWords
-        
-    }
-    
+//    func getDailyWords() -> [Word] {
+//        let correctWords: [Word] = getCorrectWords()
+//        if let wordsURL = Bundle.main.url(forResource: "correct-words", withExtension: "json") {
+//            //        print("here 1")
+//            if let data = try? Data(contentsOf: wordsURL) {
+//                // we're OK to parse!
+//                //            print("here 2")
+////                if let json = parse(json: data) {
+////                    //                print("here 3")
+////                    for item in json {
+////                        let word = Word(word: "\(item.1["word"].rawValue)", definition: "\(item.1["definition"].rawValue)")
+////                        //                    correctWords.append("\(item.1["word"].rawValue)")
+////                        correctWords.append(word)
+////                        //                    print(word)
+////                    }
+////                }
+//            }
+//        }
+//
+//        return correctWords
+//
+//    }
+//
     func getCorrectWords() -> [Word] {
-        var correctWords: [Word] = []
         if let wordsURL = Bundle.main.url(forResource: "correct-words", withExtension: "json") {
             if let data = try? Data(contentsOf: wordsURL) {
                 let decoder = JSONDecoder()
                 if let words = try? decoder.decode([Word].self, from: data) {
-//                    print("words: \(words)")
                     return words
                 }
             }
         }
-        return correctWords
+        return []
     }
 }
 

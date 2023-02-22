@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		BA1688C729979E4100A48EA8 /* dictioApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1688C629979E4100A48EA8 /* dictioApp.swift */; };
 		BA1688CB29979E4200A48EA8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA1688CA29979E4200A48EA8 /* Assets.xcassets */; };
-		BA1688CE29979E4200A48EA8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA1688CD29979E4200A48EA8 /* Preview Assets.xcassets */; };
 		BA1688E729979FC100A48EA8 /* 4-letter-words.json in Resources */ = {isa = PBXBuildFile; fileRef = BA1688DB29979FC100A48EA8 /* 4-letter-words.json */; };
 		BA1688E829979FC100A48EA8 /* 7-letter-words.json in Resources */ = {isa = PBXBuildFile; fileRef = BA1688DC29979FC100A48EA8 /* 7-letter-words.json */; };
 		BA1688EA29979FC100A48EA8 /* 8-letter-words.json in Resources */ = {isa = PBXBuildFile; fileRef = BA1688DE29979FC100A48EA8 /* 8-letter-words.json */; };
@@ -43,13 +42,18 @@
 		BA16893B299E99F900A48EA8 /* Guess+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA168937299E99F900A48EA8 /* Guess+CoreDataClass.swift */; };
 		BA16893C299E99F900A48EA8 /* Guess+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA168938299E99F900A48EA8 /* Guess+CoreDataProperties.swift */; };
 		BA16893F29A65AA600A48EA8 /* daily-words-copy.json in Resources */ = {isa = PBXBuildFile; fileRef = BA16893E29A65AA600A48EA8 /* daily-words-copy.json */; };
+		BA846D0529A67FF600E2D1D6 /* Player+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA846D0329A67FF600E2D1D6 /* Player+CoreDataClass.swift */; };
+		BA846D0629A67FF600E2D1D6 /* Player+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA846D0429A67FF600E2D1D6 /* Player+CoreDataProperties.swift */; };
+		BA846D0A29A6805700E2D1D6 /* Preview Content in Resources */ = {isa = PBXBuildFile; fileRef = BA846D0929A6805700E2D1D6 /* Preview Content */; };
+		BA846D1029A680F600E2D1D6 /* dictio.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BA846D0B29A680F600E2D1D6 /* dictio.xcdatamodeld */; };
+		BA846D1129A680F600E2D1D6 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA846D0D29A680F600E2D1D6 /* Persistence.swift */; };
+		BA846D1229A680F600E2D1D6 /* PersistenceData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BA846D0E29A680F600E2D1D6 /* PersistenceData.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		BA1688C329979E4100A48EA8 /* dictio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = dictio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA1688C629979E4100A48EA8 /* dictioApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dictioApp.swift; sourceTree = "<group>"; };
 		BA1688CA29979E4200A48EA8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		BA1688CD29979E4200A48EA8 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		BA1688D429979E4200A48EA8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BA1688DB29979FC100A48EA8 /* 4-letter-words.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "4-letter-words.json"; sourceTree = "<group>"; };
 		BA1688DC29979FC100A48EA8 /* 7-letter-words.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "7-letter-words.json"; sourceTree = "<group>"; };
@@ -86,6 +90,12 @@
 		BA168937299E99F900A48EA8 /* Guess+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Guess+CoreDataClass.swift"; sourceTree = "<group>"; };
 		BA168938299E99F900A48EA8 /* Guess+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Guess+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		BA16893E29A65AA600A48EA8 /* daily-words-copy.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "daily-words-copy.json"; sourceTree = "<group>"; };
+		BA846D0329A67FF600E2D1D6 /* Player+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Player+CoreDataClass.swift"; sourceTree = "<group>"; };
+		BA846D0429A67FF600E2D1D6 /* Player+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Player+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		BA846D0929A6805700E2D1D6 /* Preview Content */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "Preview Content"; sourceTree = "<group>"; };
+		BA846D0C29A680F600E2D1D6 /* dictio.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = dictio.xcdatamodel; sourceTree = "<group>"; };
+		BA846D0D29A680F600E2D1D6 /* Persistence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
+		BA846D0F29A680F600E2D1D6 /* PersistenceData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PersistenceData.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,21 +141,16 @@
 				BA16893D29A6183F00A48EA8 /* Data */,
 				BA168929299BDF1400A48EA8 /* Settings and State */,
 				BA1688CA29979E4200A48EA8 /* Assets.xcassets */,
+				BA846D0929A6805700E2D1D6 /* Preview Content */,
+				BA846D0B29A680F600E2D1D6 /* dictio.xcdatamodeld */,
+				BA846D0D29A680F600E2D1D6 /* Persistence.swift */,
+				BA846D0E29A680F600E2D1D6 /* PersistenceData.xcdatamodeld */,
 				BA168911299960E100A48EA8 /* Temporary pages */,
 				BA168904299814DC00A48EA8 /* External libraries */,
 				BA1688F229979FC600A48EA8 /* Words */,
 				BA1688D429979E4200A48EA8 /* Info.plist */,
-				BA1688CC29979E4200A48EA8 /* Preview Content */,
 			);
 			path = dictio;
-			sourceTree = "<group>";
-		};
-		BA1688CC29979E4200A48EA8 /* Preview Content */ = {
-			isa = PBXGroup;
-			children = (
-				BA1688CD29979E4200A48EA8 /* Preview Assets.xcassets */,
-			);
-			path = "Preview Content";
 			sourceTree = "<group>";
 		};
 		BA1688F229979FC600A48EA8 /* Words */ = {
@@ -238,6 +243,8 @@
 				BA168936299E99F900A48EA8 /* Game+CoreDataProperties.swift */,
 				BA168937299E99F900A48EA8 /* Guess+CoreDataClass.swift */,
 				BA168938299E99F900A48EA8 /* Guess+CoreDataProperties.swift */,
+				BA846D0329A67FF600E2D1D6 /* Player+CoreDataClass.swift */,
+				BA846D0429A67FF600E2D1D6 /* Player+CoreDataProperties.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -301,6 +308,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BA16893F29A65AA600A48EA8 /* daily-words-copy.json in Resources */,
+				BA846D0A29A6805700E2D1D6 /* Preview Content in Resources */,
 				BA1688EC29979FC100A48EA8 /* 9-letter-words.json in Resources */,
 				BA1688EF29979FC100A48EA8 /* 6-letter-words.json in Resources */,
 				BA1688E729979FC100A48EA8 /* 4-letter-words.json in Resources */,
@@ -308,7 +316,6 @@
 				BA16890E29995D5D00A48EA8 /* daily-words.json in Resources */,
 				BA1688F129979FC100A48EA8 /* 5-letter-words.json in Resources */,
 				BA1688F429979FE200A48EA8 /* correct-words.json in Resources */,
-				BA1688CE29979E4200A48EA8 /* Preview Assets.xcassets in Resources */,
 				BA1688EA29979FC100A48EA8 /* 8-letter-words.json in Resources */,
 				BA16891329996AE800A48EA8 /* daily-words-date.json in Resources */,
 				BA1688CB29979E4200A48EA8 /* Assets.xcassets in Resources */,
@@ -328,12 +335,16 @@
 				BA16890C299945C200A48EA8 /* GameCenterHandlers.swift in Sources */,
 				BA16893A299E99F900A48EA8 /* Game+CoreDataProperties.swift in Sources */,
 				BA168919299AB17100A48EA8 /* InitialisationView.swift in Sources */,
+				BA846D0529A67FF600E2D1D6 /* Player+CoreDataClass.swift in Sources */,
+				BA846D1229A680F600E2D1D6 /* PersistenceData.xcdatamodeld in Sources */,
 				BA168928299BD69C00A48EA8 /* SessionSettings.swift in Sources */,
 				BA1688C729979E4100A48EA8 /* dictioApp.swift in Sources */,
+				BA846D1129A680F600E2D1D6 /* Persistence.swift in Sources */,
 				BA168915299A594E00A48EA8 /* GameView.swift in Sources */,
 				BA16890A29993E2600A48EA8 /* HomeView.swift in Sources */,
 				BA16893C299E99F900A48EA8 /* Guess+CoreDataProperties.swift in Sources */,
 				BA1688F62997A08E00A48EA8 /* SwiftyJSON.swift in Sources */,
+				BA846D1029A680F600E2D1D6 /* dictio.xcdatamodeld in Sources */,
 				BA16892B299C013900A48EA8 /* EndGameView.swift in Sources */,
 				BA168917299A95F700A48EA8 /* LeaderboardView.swift in Sources */,
 				BA168922299BD1A200A48EA8 /* SessionView.swift in Sources */,
@@ -342,6 +353,7 @@
 				BA168924299BD60200A48EA8 /* State.swift in Sources */,
 				BA16892D299C058400A48EA8 /* ProfileView.swift in Sources */,
 				BA168931299E3FC700A48EA8 /* CoreDataController.swift in Sources */,
+				BA846D0629A67FF600E2D1D6 /* Player+CoreDataProperties.swift in Sources */,
 				BA16892F299E344D00A48EA8 /* CoinsView.swift in Sources */,
 				BA16891029995DC700A48EA8 /* DailyWordsArrange.swift in Sources */,
 				BA168939299E99F900A48EA8 /* Game+CoreDataClass.swift in Sources */,
@@ -477,6 +489,7 @@
 				DEVELOPMENT_TEAM = 42JRT5DE2Z;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = dictio/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -507,6 +520,7 @@
 				DEVELOPMENT_TEAM = 42JRT5DE2Z;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = dictio/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -556,6 +570,26 @@
 			);
 			currentVersion = BA168933299E44C600A48EA8 /* DictioModel.xcdatamodel */;
 			path = PlayerData.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+		BA846D0B29A680F600E2D1D6 /* dictio.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				BA846D0C29A680F600E2D1D6 /* dictio.xcdatamodel */,
+			);
+			currentVersion = BA846D0C29A680F600E2D1D6 /* dictio.xcdatamodel */;
+			path = dictio.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+		BA846D0E29A680F600E2D1D6 /* PersistenceData.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				BA846D0F29A680F600E2D1D6 /* PersistenceData.xcdatamodel */,
+			);
+			currentVersion = BA846D0F29A680F600E2D1D6 /* PersistenceData.xcdatamodel */;
+			path = PersistenceData.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

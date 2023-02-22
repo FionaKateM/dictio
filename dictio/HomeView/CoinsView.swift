@@ -13,10 +13,22 @@ struct CoinsView: View {
     var body: some View {
         VStack {
             Text("Coins View")
+            HStack {
+                Button("Add Coins") {
+                    sessionSettings.increaseCoinsBy(amount: 1)
+                }
+                .padding()
+                Button("Subtract coins") {
+                    sessionSettings.increaseCoinsBy(amount: -1)
+                }
+                .padding()
+            }
+            .padding()
             Button("Go back home") {
                 sessionSettings.appState = .home
             }
         }
     }
 }
+
 
