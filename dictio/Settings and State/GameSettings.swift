@@ -13,7 +13,6 @@ class GameSettings: ObservableObject {
     @Published var score = 0
     @Published var correctWord: Word = Word(word: "", definition: "")
     @Published var enteredWord = ""
-    @Published var dailyID: Int?
     
     // dictionary of accepted words
     @Published var allWords: [String] = []

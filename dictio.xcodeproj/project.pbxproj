@@ -23,7 +23,7 @@
 		BA16890A29993E2600A48EA8 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA16890929993E2600A48EA8 /* HomeView.swift */; };
 		BA16890C299945C200A48EA8 /* GameCenterHandlers.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA16890B299945C200A48EA8 /* GameCenterHandlers.swift */; };
 		BA16890E29995D5D00A48EA8 /* daily-words.json in Resources */ = {isa = PBXBuildFile; fileRef = BA16890D29995D5D00A48EA8 /* daily-words.json */; };
-		BA16891029995DC700A48EA8 /* DailyWordsArrage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA16890F29995DC700A48EA8 /* DailyWordsArrage.swift */; };
+		BA16891029995DC700A48EA8 /* DailyWordsArrange.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA16890F29995DC700A48EA8 /* DailyWordsArrange.swift */; };
 		BA16891329996AE800A48EA8 /* daily-words-date.json in Resources */ = {isa = PBXBuildFile; fileRef = BA16891229996AE800A48EA8 /* daily-words-date.json */; };
 		BA168915299A594E00A48EA8 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA168914299A594E00A48EA8 /* GameView.swift */; };
 		BA168917299A95F700A48EA8 /* LeaderboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA168916299A95F700A48EA8 /* LeaderboardView.swift */; };
@@ -42,6 +42,7 @@
 		BA16893A299E99F900A48EA8 /* Game+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA168936299E99F900A48EA8 /* Game+CoreDataProperties.swift */; };
 		BA16893B299E99F900A48EA8 /* Guess+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA168937299E99F900A48EA8 /* Guess+CoreDataClass.swift */; };
 		BA16893C299E99F900A48EA8 /* Guess+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA168938299E99F900A48EA8 /* Guess+CoreDataProperties.swift */; };
+		BA16893F29A65AA600A48EA8 /* daily-words-copy.json in Resources */ = {isa = PBXBuildFile; fileRef = BA16893E29A65AA600A48EA8 /* daily-words-copy.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -65,7 +66,7 @@
 		BA16890929993E2600A48EA8 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		BA16890B299945C200A48EA8 /* GameCenterHandlers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCenterHandlers.swift; sourceTree = "<group>"; };
 		BA16890D29995D5D00A48EA8 /* daily-words.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "daily-words.json"; sourceTree = "<group>"; };
-		BA16890F29995DC700A48EA8 /* DailyWordsArrage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyWordsArrage.swift; sourceTree = "<group>"; };
+		BA16890F29995DC700A48EA8 /* DailyWordsArrange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyWordsArrange.swift; sourceTree = "<group>"; };
 		BA16891229996AE800A48EA8 /* daily-words-date.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "daily-words-date.json"; sourceTree = "<group>"; };
 		BA168914299A594E00A48EA8 /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
 		BA168916299A95F700A48EA8 /* LeaderboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardView.swift; sourceTree = "<group>"; };
@@ -84,6 +85,7 @@
 		BA168936299E99F900A48EA8 /* Game+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Game+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		BA168937299E99F900A48EA8 /* Guess+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Guess+CoreDataClass.swift"; sourceTree = "<group>"; };
 		BA168938299E99F900A48EA8 /* Guess+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Guess+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		BA16893E29A65AA600A48EA8 /* daily-words-copy.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "daily-words-copy.json"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +152,7 @@
 			isa = PBXGroup;
 			children = (
 				BA16891229996AE800A48EA8 /* daily-words-date.json */,
+				BA16893E29A65AA600A48EA8 /* daily-words-copy.json */,
 				BA16890D29995D5D00A48EA8 /* daily-words.json */,
 				BA1688F329979FE200A48EA8 /* correct-words.json */,
 				BA1688DB29979FC100A48EA8 /* 4-letter-words.json */,
@@ -181,7 +184,7 @@
 		BA168911299960E100A48EA8 /* Temporary pages */ = {
 			isa = PBXGroup;
 			children = (
-				BA16890F29995DC700A48EA8 /* DailyWordsArrage.swift */,
+				BA16890F29995DC700A48EA8 /* DailyWordsArrange.swift */,
 			);
 			path = "Temporary pages";
 			sourceTree = "<group>";
@@ -297,6 +300,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BA16893F29A65AA600A48EA8 /* daily-words-copy.json in Resources */,
 				BA1688EC29979FC100A48EA8 /* 9-letter-words.json in Resources */,
 				BA1688EF29979FC100A48EA8 /* 6-letter-words.json in Resources */,
 				BA1688E729979FC100A48EA8 /* 4-letter-words.json in Resources */,
@@ -339,7 +343,7 @@
 				BA16892D299C058400A48EA8 /* ProfileView.swift in Sources */,
 				BA168931299E3FC700A48EA8 /* CoreDataController.swift in Sources */,
 				BA16892F299E344D00A48EA8 /* CoinsView.swift in Sources */,
-				BA16891029995DC700A48EA8 /* DailyWordsArrage.swift in Sources */,
+				BA16891029995DC700A48EA8 /* DailyWordsArrange.swift in Sources */,
 				BA168939299E99F900A48EA8 /* Game+CoreDataClass.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

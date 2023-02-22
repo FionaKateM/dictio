@@ -9,7 +9,63 @@ import Foundation
 import SwiftUI
 import GameKit
 
-func parse(json: Data) -> JSON? {
+struct Word : Codable {
+    var word: String
+    var definition: String
+    var id: Int?
+    var date: String?
+}
+
+struct Words : Codable {
+    var words: [Word]
+}
+
+struct DataWords : Codable {
+    var words: [String: Word]
+}
+
+func getDailyWord(date: String) -> Word? {
+    if let wordsURL = Bundle.main.url(forResource: "daily-words", withExtension: "json") {
+        if let data = try? Data(contentsOf: wordsURL) {
+            if let words = parseWordsFrom(json: data) {
+                let word = words.filter({ $0.date == date})
+                return word[0]
+            } else {
+                return nil
+            }
+        } else {
+            return nil
+        }
+    } else {
+        return nil
+    }
+}
+
+func parseWordsFrom(json: Data) -> [Word]? {
+    print("parse")
+    let decoder = JSONDecoder()
+    
+    if let words = try? decoder.decode([Word].self, from: json) {
+        return words
+    } else {
+        print("parse didn't work")
+        return nil
+    }
+}
+
+func getWords(fileName: String) -> [Word] {
+    var words: [Word] = []
+    if let wordsURL = Bundle.main.url(forResource: fileName, withExtension: "json") {
+        if let data = try? Data(contentsOf: wordsURL) {
+            if let parsedWords = parseWordsFrom(json: data) {
+                words = parsedWords
+            }
+        }
+    }
+    return words
+}
+
+func parseStrings(json: Data) -> JSON? {
     if let parsed = try? JSON(data: json) {
         return parsed
     } else {
@@ -18,71 +74,14 @@ func parse(json: Data) -> JSON? {
     return nil
 }
 
-
-
-struct Word : Codable {
-    var word: String
-    var definition: String
-}
-
-struct Words : Codable {
-    var words: [Word]
-}
-
-
-func getDailyWord(id: String) -> Word? {
-//    var word = Word(word: "", definition: "")
-    if let wordsURL = Bundle.main.url(forResource: "daily-words-date", withExtension: "json") {
-        if let data = try? Data(contentsOf: wordsURL) {
-            // we're OK to parse!
-            if let json = parse(json: data) {
-                let dict = json[0]
-                print("returning word: \(dict[id])")
-
-                return Word(word: "\(dict[id])", definition: "")
-//                let word = "\(dict[id])"
-            } else {
-                return nil
-            }
-        } else {
-            return nil
-        }
-    } else {
-//        print("word from daily word func: \(word.word)")
-        return nil
-    }
-}
-
-func getCorrectWords() -> [Word] {
-    var correctWords: [Word] = []
-    if let wordsURL = Bundle.main.url(forResource: "correct-words", withExtension: "json") {
-//        print("here 1")
-        if let data = try? Data(contentsOf: wordsURL) {
-            // we're OK to parse!
-//            print("here 2")
-            if let json = parse(json: data) {
-//                print("here 3")
-                for item in json {
-                    let word = Word(word: "\(item.1["word"].rawValue)", definition: "\(item.1["definition"].rawValue)")
-//                    correctWords.append("\(item.1["word"].rawValue)")
-                    correctWords.append(word)
-//                    print(word)
-                }
-            }
-        }
-    }
-    
-    return correctWords
-    
-}
-
+// gets all words of a specific length that will be accepted in the game
 func getWordsOf(length: Int) -> [String] {
     var allWords: [String] = []
+    let decoder = JSONDecoder()
     
     if let wordsURL = Bundle.main.url(forResource: "\(length)-letter-words", withExtension: "json") {
         if let data = try? Data(contentsOf: wordsURL) {
-            // we're OK to parse!
-            if let json = parse(json: data) {
+            if let json = parseStrings(json: data) {
                 for item in json {
                     if let word = item.1.dictionaryValue.first?.value.rawValue {
                         allWords = allWords + ["\(word)"]
@@ -91,89 +90,54 @@ func getWordsOf(length: Int) -> [String] {
             }
         }
     }
+    print("all words: \(allWords)")
     return allWords
 }
 
-func getAllWords() -> [String] {
-    var allWords: [String] = []
-    
-    for i in 4...15 {
-        allWords.append(contentsOf: getWordsOf(length: i))
-    }
-    
-    return allWords.sorted()
+func getPracticeWord() -> Word {
+    return Word(word: "word", definition: "xxx")
 }
 
-func getWord() -> Word {
-    let word = getCorrectWords().randomElement() ?? Word(word: "", definition: "")
-    print("word got: \(word.word)")
-    return word
-}
-
-func resetEnteredLetters() -> [String] {
-
-    return ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""]
-}
-
-func initialiseGame(date: String?, testWord: String?, wordLength: Int?) -> GameSettings {
+func initialiseGame(date: String?) -> GameSettings {
     var correctWord: Word = Word(word: "", definition: "")
-    var dailyID: Int?
+    
+    //*** Word selection ***
+    
+    // if it is a daily game
     if let dateID = date {
         print("getting daily word")
         // TODO: add check that they have not already played the daily game
-        if let word = getDailyWord(id: dateID) {
-            dailyID = 5
+        if let word = getDailyWord(date: dateID) {
             correctWord = word
         }
         
-    } else if let testWord = testWord {
-        print("word does equals speechmarks")
-        correctWord = Word(word: testWord.lowercased(), definition: "")
-    } else if let length = wordLength {
-        // get word of specific length from correct words
-        // TODO - fix this
-        switch length {
-        case 4:
-            correctWord = Word(word: "test", definition: "xxx")
-        case 5:
-            correctWord = Word(word: "hello", definition: "xxx")
-        case 6:
-            correctWord = Word(word: "abacus", definition: "xxx")
-        case 7:
-            correctWord = Word(word: "abysmal", definition: "xxx")
-        case 8:
-            correctWord = Word(word: "absolute", definition: "xxx")
-        default:
-            correctWord = Word(word: "unbelievable", definition: "xxx")
-        }
     } else {
-        correctWord = getWord()
+        // not a daily game
+        correctWord = getPracticeWord()
     }
     
+    
+    //*** Game initialisation ***
+    
+    // gets all accepted words the same length as correct word
     let words = getWordsOf(length: correctWord.word.count)
+    
+    // sets the number of entered letters to the number of letters in the correct word
     var enteredLetters: [String] = []
     for _ in 0..<correctWord.word.count {
         enteredLetters.append("")
     }
     
+    // prints the correct word for easy testing
     print("returning game settings with word: \(correctWord.word)")
-    let gameSettings = GameSettings(score: 0, correctWord: correctWord, enteredWord: "", allWords: words, allValidWords: words, wordLocation: [correctWord.word], colourIndices: (0, 26, 500), enteredLetters: enteredLetters, gameState: .game, started: Date.now)
     
-    if dailyID != nil {
-        gameSettings.dailyID = dailyID
-    }
+    // initialises the gameSettings struct
+    let gameSettings = GameSettings(score: 0, correctWord: correctWord, enteredWord: "", allWords: words, allValidWords: words, wordLocation: [correctWord.word], colourIndices: (0, 26, 500), enteredLetters: enteredLetters, gameState: .game, started: Date.now)
     
     return gameSettings
 }
 
-enum EnteredWordState {
-    case correct
-    case newTopBoundary
-    case newBottomBoundary
-    case invalidWord
-    case invalidOutsideBoundaries
-    case activeEntering
-}
+
 
 
 

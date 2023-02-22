@@ -44,6 +44,9 @@ struct SessionView: View {
             case .coins:
                 CoinsView()
                     .navigationBarHidden(true)
+                
+            case .temp:
+                DailyWordsArrange()
             }
         }
         .onAppear(){

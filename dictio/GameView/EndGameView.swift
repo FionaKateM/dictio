@@ -19,7 +19,7 @@ struct EndGameView: View {
                 .padding()
             Text("You found the word \(gameSettings.correctWord.word) in \(gameSettings.allGuessedWords.count) guesses")
                 .padding()
-            LeaderboardView(leaderboardWord: (gameSettings.dailyID != nil) ? "daily" : gameSettings.correctWord.word)
+            LeaderboardView(leaderboardWord: (gameSettings.correctWord.id != nil) ? "daily" : gameSettings.correctWord.word)
         }
     }
 }

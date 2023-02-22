@@ -100,12 +100,17 @@ struct GameView: View {
         // save data
         saveGame()
         
-        await leaderboard(score: gameSettings.score, word: gameSettings.correctWord.word, isDaily: gameSettings.dailyID != nil)
+        await leaderboard(score: gameSettings.score, word: gameSettings.correctWord.word, isDaily: gameSettings.correctWord.id != nil)
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
                 gameSettings.gameState = .ended
             }
         
         
+    }
+    
+    func resetEnteredLetters() -> [String] {
+
+        return ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""]
     }
     
     func saveGame() {
@@ -128,7 +133,7 @@ struct GameView: View {
         game.started = gameSettings.started
         
         
-        if let dailyID = gameSettings.dailyID {
+        if let dailyID = gameSettings.correctWord.id {
             game.dailyGameID = Int16(dailyID)
         }
         

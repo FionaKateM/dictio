@@ -13,10 +13,20 @@ enum SessionState {
     case stats
     case profile
     case coins
+    case temp
 }
 
 enum GameState {
     case game
     case ended
+}
+
+enum EnteredWordState {
+    case correct
+    case newTopBoundary
+    case newBottomBoundary
+    case invalidWord
+    case invalidOutsideBoundaries
+    case activeEntering
 }
 
