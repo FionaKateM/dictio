@@ -12,7 +12,6 @@ enum SessionState {
     case game
     case stats
     case profile
-    case coins
     case temp
 }
 

@@ -23,7 +23,6 @@ struct HomeView: View {
     @State var numberOfLetters: String = ""
     
     @State var dailyGameDisabled = false
-    @State var practiceGameDisabled = false
     
     var body: some View {
         VStack {
@@ -42,18 +41,7 @@ struct HomeView: View {
                     
                 }
                                 .padding()
-                Button {
-                    sessionSettings.appState = .coins
-                } label: {
-                    ZStack {
-                        Circle()
-                            .fill(.white)
-                            .frame(width: 20, height: 20)
-                        Text("\(sessionSettings.playerData.coins)")
-                            .foregroundColor(.blue)
-                    }
-                }
-                .padding()
+                
                 Button {
                     sessionSettings.appState = .stats
                 } label: {
@@ -92,7 +80,6 @@ struct HomeView: View {
                     Task {
                         await checkIfDailyGamePlayed()
                     }
-                    checkIfPracticeAllowed()
                 }
                 
                 VStack {
@@ -101,8 +88,7 @@ struct HomeView: View {
                             await playPracticeGame()
                         }
                     }
-                    .disabled(practiceGameDisabled)
-                    .foregroundColor(practiceGameDisabled ? .gray : .white)
+
                 }
                 .padding()
                 .border(.white)
@@ -153,14 +139,6 @@ struct HomeView: View {
         return try await localPlayer.fetchSavedGames()
     }
     
-    func checkIfPracticeAllowed() {
-        if sessionSettings.playerData.coins > 0 {
-            practiceGameDisabled = false
-        } else {
-            practiceGameDisabled = true
-        }
-    }
-    
     func playDailyGame() async {
         
         let date = formatDate(Date.now)
@@ -184,13 +162,8 @@ struct HomeView: View {
     }
     
     func playPracticeGame() async {
-        if sessionSettings.playerData.coins >= 1 {
-            sessionSettings.playerData.coins -= 1
-            sessionSettings.gameSettings = await initialiseGame(date: nil)
-            sessionSettings.appState = .game
-        } else {
-            return
-        }
+        sessionSettings.gameSettings = await initialiseGame(date: nil)
+        sessionSettings.appState = .game
     }
     
     func playSpecificGame(word: String) {

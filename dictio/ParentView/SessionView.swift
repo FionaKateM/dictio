@@ -38,8 +38,6 @@ struct SessionView: View {
                 StatsView()
             case .profile:
                 ProfileView()
-            case .coins:
-                CoinsView()
             case .temp:
                 DailyWordsArrange()
                 

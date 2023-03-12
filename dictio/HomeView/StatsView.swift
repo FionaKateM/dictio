@@ -33,7 +33,7 @@ struct StreakView: View {
     }
     
     func calculateStreak() async {
-        var todaysID = await whatIsTodaysDailyID()
+        let todaysID = await whatIsTodaysDailyID()
         let games = await sessionSettings.loadPlayedGamesData()
         var filtered = games.filter{$0.dailyID != nil}
         filtered.sort {
@@ -44,17 +44,13 @@ struct StreakView: View {
             if games.contains(where: {$0.dailyID == i}) {
                 print("contains: \(i)")
                 streakInt += 1
+            } else if todaysID == i {
+                print("has not played today's game yet")
             } else {
                 print("does not contain: \(i)")
                 break
             }
         }
-
-        for game in filtered {
-            print("game daily id: \(game.dailyID)")
-        }
-        print("games: \(games)")
-        
     }
 }
 

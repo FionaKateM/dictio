@@ -33,7 +33,6 @@
 		BA168928299BD69C00A48EA8 /* SessionSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA168927299BD69C00A48EA8 /* SessionSettings.swift */; };
 		BA16892B299C013900A48EA8 /* EndGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA16892A299C013900A48EA8 /* EndGameView.swift */; };
 		BA16892D299C058400A48EA8 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA16892C299C058400A48EA8 /* ProfileView.swift */; };
-		BA16892F299E344D00A48EA8 /* CoinsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA16892E299E344D00A48EA8 /* CoinsView.swift */; };
 		BA168931299E3FC700A48EA8 /* CoreDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA168930299E3FC700A48EA8 /* CoreDataController.swift */; };
 		BA168934299E44C600A48EA8 /* PlayerData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BA168932299E44C600A48EA8 /* PlayerData.xcdatamodeld */; };
 		BA168939299E99F900A48EA8 /* Game+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA168935299E99F900A48EA8 /* Game+CoreDataClass.swift */; };
@@ -80,7 +79,6 @@
 		BA168927299BD69C00A48EA8 /* SessionSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionSettings.swift; sourceTree = "<group>"; };
 		BA16892A299C013900A48EA8 /* EndGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndGameView.swift; sourceTree = "<group>"; };
 		BA16892C299C058400A48EA8 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
-		BA16892E299E344D00A48EA8 /* CoinsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinsView.swift; sourceTree = "<group>"; };
 		BA168930299E3FC700A48EA8 /* CoreDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataController.swift; sourceTree = "<group>"; };
 		BA168933299E44C600A48EA8 /* DictioModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DictioModel.xcdatamodel; sourceTree = "<group>"; };
 		BA168935299E99F900A48EA8 /* Game+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Game+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -207,7 +205,6 @@
 				BA16891F299AB6C400A48EA8 /* StatsView.swift */,
 				BA168916299A95F700A48EA8 /* LeaderboardView.swift */,
 				BA16892C299C058400A48EA8 /* ProfileView.swift */,
-				BA16892E299E344D00A48EA8 /* CoinsView.swift */,
 			);
 			path = HomeView;
 			sourceTree = "<group>";
@@ -350,7 +347,6 @@
 				BA16892D299C058400A48EA8 /* ProfileView.swift in Sources */,
 				BA168931299E3FC700A48EA8 /* CoreDataController.swift in Sources */,
 				BA846D0629A67FF600E2D1D6 /* Player+CoreDataProperties.swift in Sources */,
-				BA16892F299E344D00A48EA8 /* CoinsView.swift in Sources */,
 				BA16891029995DC700A48EA8 /* DailyWordsArrange.swift in Sources */,
 				BA168939299E99F900A48EA8 /* Game+CoreDataClass.swift in Sources */,
 			);
