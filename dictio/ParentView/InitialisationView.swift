@@ -8,6 +8,7 @@
 import SwiftUI
 import GameKit
 
+
 // Initialisation View is the loading screen presented on opening the app
 // This authenticates the player with GameKit and if they are not already logged in, asks them to do so
 // No information, other than a loading animation and a button to log into Game Center, will be on this screen
@@ -45,6 +46,9 @@ struct InitialisationView: View {
                 
             } else {
                 SessionView(sessionSettings: SessionSettings(appState: .home, player: localPlayer, gameSettings: nil, playedGames: loadedGames ?? [], playerData: convertFetchedResultsPlayerData()))
+                    .onAppear() {
+                        addNotification()
+                    }
             }
         }
     }
@@ -74,8 +78,6 @@ struct InitialisationView: View {
         }
     }
     
-    
-    
     func checkCoreData() {
         if playerData.count == 0 {
             // no player data, needs to be created
@@ -87,6 +89,9 @@ struct InitialisationView: View {
             try? moc.save()
         }
     }
+    
+    
+    
     
 //    func convertFetchedResultsGames() -> [Game] {
 //        var gamesArray: [Game] = []
