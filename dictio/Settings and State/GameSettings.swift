@@ -48,3 +48,17 @@ class GameSettings: ObservableObject {
         self.started = started
     }
 }
+
+class GameData: Codable {
+    var started: Date
+    var ended: Date?
+    var guesses: [String]
+    var correctWord: String
+    var dailyID: Int?
+    
+    init(started: Date, guesses: [String], correctWord: String) {
+        self.started = started
+        self.guesses = guesses
+        self.correctWord = correctWord
+    }
+}

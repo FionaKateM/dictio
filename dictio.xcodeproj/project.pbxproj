@@ -23,7 +23,6 @@
 		BA16890C299945C200A48EA8 /* GameCenterHandlers.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA16890B299945C200A48EA8 /* GameCenterHandlers.swift */; };
 		BA16890E29995D5D00A48EA8 /* daily-words.json in Resources */ = {isa = PBXBuildFile; fileRef = BA16890D29995D5D00A48EA8 /* daily-words.json */; };
 		BA16891029995DC700A48EA8 /* DailyWordsArrange.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA16890F29995DC700A48EA8 /* DailyWordsArrange.swift */; };
-		BA16891329996AE800A48EA8 /* daily-words-date.json in Resources */ = {isa = PBXBuildFile; fileRef = BA16891229996AE800A48EA8 /* daily-words-date.json */; };
 		BA168915299A594E00A48EA8 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA168914299A594E00A48EA8 /* GameView.swift */; };
 		BA168917299A95F700A48EA8 /* LeaderboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA168916299A95F700A48EA8 /* LeaderboardView.swift */; };
 		BA168919299AB17100A48EA8 /* InitialisationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA168918299AB17100A48EA8 /* InitialisationView.swift */; };
@@ -41,13 +40,13 @@
 		BA16893A299E99F900A48EA8 /* Game+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA168936299E99F900A48EA8 /* Game+CoreDataProperties.swift */; };
 		BA16893B299E99F900A48EA8 /* Guess+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA168937299E99F900A48EA8 /* Guess+CoreDataClass.swift */; };
 		BA16893C299E99F900A48EA8 /* Guess+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA168938299E99F900A48EA8 /* Guess+CoreDataProperties.swift */; };
-		BA16893F29A65AA600A48EA8 /* daily-words-copy.json in Resources */ = {isa = PBXBuildFile; fileRef = BA16893E29A65AA600A48EA8 /* daily-words-copy.json */; };
 		BA846D0529A67FF600E2D1D6 /* Player+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA846D0329A67FF600E2D1D6 /* Player+CoreDataClass.swift */; };
 		BA846D0629A67FF600E2D1D6 /* Player+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA846D0429A67FF600E2D1D6 /* Player+CoreDataProperties.swift */; };
 		BA846D0A29A6805700E2D1D6 /* Preview Content in Resources */ = {isa = PBXBuildFile; fileRef = BA846D0929A6805700E2D1D6 /* Preview Content */; };
 		BA846D1029A680F600E2D1D6 /* dictio.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BA846D0B29A680F600E2D1D6 /* dictio.xcdatamodeld */; };
 		BA846D1129A680F600E2D1D6 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA846D0D29A680F600E2D1D6 /* Persistence.swift */; };
 		BA846D1229A680F600E2D1D6 /* PersistenceData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BA846D0E29A680F600E2D1D6 /* PersistenceData.xcdatamodeld */; };
+		BA846D1429A6A97800E2D1D6 /* blue-bg.png in Resources */ = {isa = PBXBuildFile; fileRef = BA846D1329A6A97800E2D1D6 /* blue-bg.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -71,7 +70,6 @@
 		BA16890B299945C200A48EA8 /* GameCenterHandlers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCenterHandlers.swift; sourceTree = "<group>"; };
 		BA16890D29995D5D00A48EA8 /* daily-words.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "daily-words.json"; sourceTree = "<group>"; };
 		BA16890F29995DC700A48EA8 /* DailyWordsArrange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyWordsArrange.swift; sourceTree = "<group>"; };
-		BA16891229996AE800A48EA8 /* daily-words-date.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "daily-words-date.json"; sourceTree = "<group>"; };
 		BA168914299A594E00A48EA8 /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
 		BA168916299A95F700A48EA8 /* LeaderboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardView.swift; sourceTree = "<group>"; };
 		BA168918299AB17100A48EA8 /* InitialisationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialisationView.swift; sourceTree = "<group>"; };
@@ -89,13 +87,13 @@
 		BA168936299E99F900A48EA8 /* Game+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Game+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		BA168937299E99F900A48EA8 /* Guess+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Guess+CoreDataClass.swift"; sourceTree = "<group>"; };
 		BA168938299E99F900A48EA8 /* Guess+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Guess+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		BA16893E29A65AA600A48EA8 /* daily-words-copy.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "daily-words-copy.json"; sourceTree = "<group>"; };
 		BA846D0329A67FF600E2D1D6 /* Player+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Player+CoreDataClass.swift"; sourceTree = "<group>"; };
 		BA846D0429A67FF600E2D1D6 /* Player+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Player+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		BA846D0929A6805700E2D1D6 /* Preview Content */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "Preview Content"; sourceTree = "<group>"; };
 		BA846D0C29A680F600E2D1D6 /* dictio.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = dictio.xcdatamodel; sourceTree = "<group>"; };
 		BA846D0D29A680F600E2D1D6 /* Persistence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		BA846D0F29A680F600E2D1D6 /* PersistenceData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PersistenceData.xcdatamodel; sourceTree = "<group>"; };
+		BA846D1329A6A97800E2D1D6 /* blue-bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "blue-bg.png"; path = "Icon/pngs/blue-bg.png"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,6 +139,7 @@
 				BA16893D29A6183F00A48EA8 /* Data */,
 				BA168929299BDF1400A48EA8 /* Settings and State */,
 				BA1688CA29979E4200A48EA8 /* Assets.xcassets */,
+				BA846D1329A6A97800E2D1D6 /* blue-bg.png */,
 				BA846D0929A6805700E2D1D6 /* Preview Content */,
 				BA846D0B29A680F600E2D1D6 /* dictio.xcdatamodeld */,
 				BA846D0D29A680F600E2D1D6 /* Persistence.swift */,
@@ -156,8 +155,6 @@
 		BA1688F229979FC600A48EA8 /* Words */ = {
 			isa = PBXGroup;
 			children = (
-				BA16891229996AE800A48EA8 /* daily-words-date.json */,
-				BA16893E29A65AA600A48EA8 /* daily-words-copy.json */,
 				BA16890D29995D5D00A48EA8 /* daily-words.json */,
 				BA1688F329979FE200A48EA8 /* correct-words.json */,
 				BA1688DB29979FC100A48EA8 /* 4-letter-words.json */,
@@ -307,7 +304,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BA16893F29A65AA600A48EA8 /* daily-words-copy.json in Resources */,
 				BA846D0A29A6805700E2D1D6 /* Preview Content in Resources */,
 				BA1688EC29979FC100A48EA8 /* 9-letter-words.json in Resources */,
 				BA1688EF29979FC100A48EA8 /* 6-letter-words.json in Resources */,
@@ -317,7 +313,7 @@
 				BA1688F129979FC100A48EA8 /* 5-letter-words.json in Resources */,
 				BA1688F429979FE200A48EA8 /* correct-words.json in Resources */,
 				BA1688EA29979FC100A48EA8 /* 8-letter-words.json in Resources */,
-				BA16891329996AE800A48EA8 /* daily-words-date.json in Resources */,
+				BA846D1429A6A97800E2D1D6 /* blue-bg.png in Resources */,
 				BA1688CB29979E4200A48EA8 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -483,6 +479,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = dictio/dictio.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"dictio/Preview Content\"";
@@ -490,6 +487,8 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = dictio/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Dictio;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.word-games";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -502,6 +501,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = co.uk.fionakate.dictio;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -514,6 +514,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = dictio/dictio.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"dictio/Preview Content\"";
@@ -521,6 +522,8 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = dictio/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Dictio;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.word-games";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -533,6 +536,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = co.uk.fionakate.dictio;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

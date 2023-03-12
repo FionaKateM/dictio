@@ -15,22 +15,37 @@ import GameKit
 struct InitialisationView: View {
     @State var localPlayer = GKLocalPlayer.local
     @State var playerAuthenticated = false
+    @State var loadedGames: [GKSavedGame]?
     @Environment(\.managedObjectContext) var moc
     
     @FetchRequest(sortDescriptors: []) var games: FetchedResults<Game>
     @FetchRequest(sortDescriptors: []) var playerData: FetchedResults<Player>
     
     var body: some View {
-        if !playerAuthenticated {
-            Text("Loading your Game Center profile")
-                .onAppear() {
-                    Task {
-                        authenticateUser()
-                        checkCoreData()
+        ZStack {
+            
+            Image("blue-bg")
+                .resizable()
+                .edgesIgnoringSafeArea(.all)
+            
+            if !playerAuthenticated {
+                Text("Loading your Game Center profile")
+                    .onAppear() {
+                        Task {
+                            authenticateUser()
+                        }
                     }
-                }
-        } else {
-            SessionView(sessionSettings: SessionSettings(appState: .home, player: localPlayer, gameSettings: nil, playedGames: convertFetchedResultsGames(), playerData: convertFetchedResultsPlayerData()))
+            } else if loadedGames == nil {
+                Text("Loading your Games")
+                    .onAppear() {
+                        Task {
+                            await loadSavedGames()
+                        }
+                    }
+                
+            } else {
+                SessionView(sessionSettings: SessionSettings(appState: .home, player: localPlayer, gameSettings: nil, playedGames: loadedGames ?? [], playerData: convertFetchedResultsPlayerData()))
+            }
         }
     }
     
@@ -41,10 +56,25 @@ struct InitialisationView: View {
                 print(error?.localizedDescription ?? "")
                 return
             }
-            //            GKAccessPoint.shared.isActive = localPlayer.isAuthenticated
+//                        GKAccessPoint.shared.isActive = localPlayer.isAuthenticated
             playerAuthenticated = true
         }
     }
+    
+    func loadSavedGames() async {
+        print("load saved games")
+        localPlayer.fetchSavedGames { g, error in
+            if g == nil {
+                loadedGames = []
+                print("no games loaded")
+            } else {
+                loadedGames = g
+                print("games loaded: \(g)")
+            }
+        }
+    }
+    
+    
     
     func checkCoreData() {
         if playerData.count == 0 {
@@ -58,13 +88,13 @@ struct InitialisationView: View {
         }
     }
     
-    func convertFetchedResultsGames() -> [Game] {
-        var gamesArray: [Game] = []
-        for game in games {
-            gamesArray.append(game)
-        }
-        return gamesArray
-    }
+//    func convertFetchedResultsGames() -> [Game] {
+//        var gamesArray: [Game] = []
+//        for game in games {
+//            gamesArray.append(game)
+//        }
+//        return gamesArray
+//    }
     
     func convertFetchedResultsPlayerData() -> Player {
         if playerData.count > 0 {
@@ -77,6 +107,10 @@ struct InitialisationView: View {
             
             return player
         }
+    }
+    
+    func getPlayerData(for player: GKLocalPlayer) {
+        
     }
     
 }

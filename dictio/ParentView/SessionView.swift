@@ -7,6 +7,7 @@
 
 import SwiftUI
 import CoreData
+import GameKit
 
 // Session View is the main view controlling between active game, home, profile and data screens
 // Session View contains the session variables
@@ -47,6 +48,9 @@ struct SessionView: View {
         .environmentObject(sessionSettings)
         .onChange(of: sessionSettings.playerData.coins) { _ in
             updatePlayerData()
+        }
+        .onAppear() {
+            print("session games: \(sessionSettings.playedGames)")
         }
     }
     

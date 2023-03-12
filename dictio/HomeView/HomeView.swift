@@ -17,6 +17,8 @@ struct HomeView: View {
     @Environment(\.managedObjectContext) var moc
     @FetchRequest(sortDescriptors: []) var games: FetchedResults<Game>
     
+    @State var localPlayer = GKLocalPlayer.local
+    
     @State var selectedWord: String = ""
     @State var numberOfLetters: String = ""
     
@@ -34,18 +36,35 @@ struct HomeView: View {
                     sessionSettings.appState = .profile
                 } label: {
                     Image(systemName: "person.circle")
+//                        .padding()
+                        .frame(width: 20, height: 20)
+                        .foregroundColor(.white)
                     
                 }
-                .padding()
+                                .padding()
                 Button {
                     sessionSettings.appState = .coins
                 } label: {
-                    Text("\(sessionSettings.playerData.coins)")
-                        .padding()
-                        .foregroundColor(.white)
-                        .background(.blue)
-                        .clipShape(Circle())
+                    ZStack {
+                        Circle()
+                            .fill(.white)
+                            .frame(width: 20, height: 20)
+                        Text("\(sessionSettings.playerData.coins)")
+                            .foregroundColor(.blue)
+                    }
                 }
+                .padding()
+                Button {
+                    sessionSettings.appState = .stats
+                } label: {
+                    Image(systemName: "chart.xyaxis.line")
+//                        .padding()
+                        .frame(width: 20, height: 20)
+                        .foregroundColor(.white)
+                    
+                }
+                .padding()
+                
             }
             .padding()
             
@@ -58,42 +77,80 @@ struct HomeView: View {
                 
                 VStack {
                     Button("Play daily game") {
-                        playDailyGame()
+                        Task {
+                            await playDailyGame()
+                        }
                     }
                     .disabled(dailyGameDisabled)
+                    .foregroundColor(dailyGameDisabled ? .gray : .white)
                     Text("\(Date.now.formatted(date: .numeric, time: .omitted))")
+                        .foregroundColor(.gray)
                 }
                 .padding()
+                .border(.white)
                 .onAppear() {
-                    checkIfDailyGamePlayed()
+                    Task {
+                        await checkIfDailyGamePlayed()
+                    }
                     checkIfPracticeAllowed()
                 }
                 
                 VStack {
                     Button("Play practice game") {
-                        playPracticeGame()
+                        Task {
+                            await playPracticeGame()
+                        }
                     }
                     .disabled(practiceGameDisabled)
+                    .foregroundColor(practiceGameDisabled ? .gray : .white)
                 }
                 .padding()
-                
+                .border(.white)
                 Spacer()
                 
             }
             
+            VStack {
+                // temporary button
+                
+                Button("Delete saved game: blew") {
+                    Task {
+                        await deleteSavedGame(name: "blew")
+                    }
+                }
+            }
         }
-        
-        
-        
     }
-    func checkIfDailyGamePlayed() {
-        // check whether they have already played the daily game and reject
-        let dailyWord = getDailyWord(date: "\(Date.now.formatted(date: .numeric, time: .omitted))")
-        
-        if sessionSettings.playedGames.filter({ $0.correctWord == dailyWord?.word}).count > 0 {
-            // daily word already played
-            dailyGameDisabled = true
+    
+    func deleteSavedGame(name: String) async {
+        print("deleting game")
+        try? await localPlayer.deleteSavedGames(withName: name)
+    }
+    
+    func checkIfDailyGamePlayed() async {
+        do {
+            let g = try await self.fetchPlayedGames()
+            sessionSettings.playedGames = g
+            let date = formatDate(Date.now)
+            print("checking if daily game played")
+            // check whether they have already played the daily game and reject
+            let dailyWord = await getDailyWord(date: date)
+            for game in sessionSettings.playedGames {
+                if game.name == dailyWord?.word {
+                    // TODO: if word was played but not as daily game then they should be able to play it again but as a daily game, keeping their daily score on the leaderboard
+                    print("daily game has been played")
+                    dailyGameDisabled = true
+                    return
+                }
+            }
         }
+        catch {
+            
+        }
+    }
+    
+    func fetchPlayedGames() async throws -> ([GKSavedGame]) {
+        return try await localPlayer.fetchSavedGames()
     }
     
     func checkIfPracticeAllowed() {
@@ -104,29 +161,55 @@ struct HomeView: View {
         }
     }
     
-    func playDailyGame() {
+    func playDailyGame() async {
         
-        
-        
-        
+        let date = formatDate(Date.now)
+        print("date: \(date)")
         
         // initialise the game with the daily word
-        sessionSettings.gameSettings = initialiseGame(date: "\(Date.now.formatted(date: .numeric, time: .omitted))")
+        sessionSettings.gameSettings = await initialiseGame(date: "\(date)")
         
         // add 1 to coins for playing a daily game
         sessionSettings.playerData.coins += 1
-
+        
         dailyGameDisabled = true
-        sessionSettings.appState = .game
+        
+        if let count = sessionSettings.gameSettings?.correctWord.word.count {
+            if count > 0 {
+                sessionSettings.appState = .game
+            } else {
+                print("Can't load daily game")
+            }
+        }
     }
     
-    func playPracticeGame() {
+    func playPracticeGame() async {
         if sessionSettings.playerData.coins >= 1 {
             sessionSettings.playerData.coins -= 1
-            sessionSettings.gameSettings = initialiseGame(date: nil)
+            sessionSettings.gameSettings = await initialiseGame(date: nil)
             sessionSettings.appState = .game
         } else {
             return
         }
+    }
+    
+    func playSpecificGame(word: String) {
+        
+        let correctWord = Word(word: word.lowercased(), definition: "xxx")
+        //*** Game initialisation ***
+        
+        // gets all accepted words the same length as correct word
+        let words = getWordsOf(length: correctWord.word.count)
+        
+        // sets the number of entered letters to the number of letters in the correct word
+        var enteredLetters: [String] = []
+        for _ in 0..<correctWord.word.count {
+            enteredLetters.append("")
+        }
+        
+        // initialises the gameSettings struct
+        sessionSettings.gameSettings = GameSettings(score: 0, correctWord: correctWord, enteredWord: "", allWords: words, allValidWords: words, wordLocation: [correctWord.word], colourIndices: (0, 26, 500), enteredLetters: enteredLetters, gameState: .game, started: Date.now)
+        
+        sessionSettings.appState = .game
     }
 }

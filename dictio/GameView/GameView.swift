@@ -38,11 +38,14 @@ struct GameView: View {
                     }
                     
                 }
+                
             } else if gameSettings.gameState == .ended {
                 EndGameView()
             }
         }
+        
         .environmentObject(gameSettings)
+        
     }
     
     func checkWord() {
@@ -63,7 +66,6 @@ struct GameView: View {
             }
         } else {
             gameSettings.score += 1
-            print("all valid words")
             guard let correctWordIndex = gameSettings.allValidWords.firstIndex(of: gameSettings.correctWord.word.lowercased()), let enteredWordIndex = gameSettings.allValidWords.firstIndex(of: gameSettings.enteredWord.lowercased()) else {
                 print("can't find entered or correct word index")
                 return
@@ -88,8 +90,8 @@ struct GameView: View {
                 print("correct word index: \(correctWordIndex), entered word index: \(enteredWordIndex)")
             }
             gameSettings.allGuessedWords.append(gameSettings.enteredWord.lowercased())
-            gameSettings.enteredWord = ""
             gameSettings.enteredLetters = resetEnteredLetters()
+            gameSettings.enteredWord = gameSettings.enteredLetters.joined()
             wordInFocus = true
             // top or bottom boundary
         }
@@ -101,45 +103,46 @@ struct GameView: View {
         saveGame()
         
         await leaderboard(score: gameSettings.score, word: gameSettings.correctWord.word, isDaily: gameSettings.correctWord.id != nil)
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-                gameSettings.gameState = .ended
-            }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+            gameSettings.gameState = .ended
+        }
         
         
     }
     
     func resetEnteredLetters() -> [String] {
-
-        return ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""]
+        var array: [String] = []
+        let topBoundary = Array(gameSettings.wordBoundaries.0.lowercased())
+        let bottomBoundary = Array(gameSettings.wordBoundaries.1.lowercased())
+        var sameLetters = true
+        for index in 0..<gameSettings.correctWord.word.count {
+            if topBoundary.count == bottomBoundary.count && topBoundary.count == gameSettings.correctWord.word.count {
+                if topBoundary[index] == bottomBoundary[index] && sameLetters {
+                    array.append(String(topBoundary[index]))
+                } else {
+                    sameLetters = false
+                    array.append("")
+                }
+            } else {
+                array.append("")
+            }
+        }
+        return array
     }
     
     func saveGame() {
-        let game = Game(context: moc)
+        let game = GameData(started: gameSettings.started, guesses: gameSettings.allGuessedWords, correctWord: gameSettings.correctWord.word)
         print("save data")
-        
-        // Get guesses from array and turn into ordered set
-        let mutableSet: NSMutableOrderedSet = []
-        for guess in gameSettings.allGuessedWords {
-            print("guess is ok")
-            let guessedWord = Guess(context: moc)
-            guessedWord.guess = guess
-            mutableSet.add(guessedWord)
-            print("guessed word: \(guess)")
-        }
-        game.guesses = mutableSet
         
         // timestamps
         game.ended = Date.now
-        game.started = gameSettings.started
-        
         
         if let dailyID = gameSettings.correctWord.id {
-            game.dailyGameID = Int16(dailyID)
+            game.dailyID = dailyID
         }
         
-        game.correctWord = gameSettings.correctWord.word
-
-        try? moc.save()
+        dictio.saveGame(data: game)
+        
     }
 }
 

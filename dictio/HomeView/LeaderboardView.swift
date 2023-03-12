@@ -32,9 +32,7 @@ struct LeaderboardView: View {
             }
             .padding()
             VStack {
-                
                 List((0..<leaderboardEntries.count), id: \.self) { i in
-                    //            ForEach((0..<leaderboardEntries.count), id: \.self) {i in
                     if let entry = leaderboardEntries[i] {
                         HStack {
                             Text("\(entry.player.displayName)")
@@ -53,16 +51,21 @@ struct LeaderboardView: View {
                     }
                 }
             }
-        }
-        .onAppear() {
-            Task {
-                await loadLeaderboard(word: leaderboardWord?.lowercased() ?? "daily")
+            .refreshable() {
+                print("refresh")
+                    Task {
+                        await loadLeaderboard(word: leaderboardWord?.lowercased() ?? "daily")
+                    }
             }
+        }
+        .task {
+            await loadLeaderboard(word: leaderboardWord?.lowercased() ?? "daily")
         }
     }
     
     func loadLeaderboard(word: String) async {
         Task{
+            print("loading leaderboard")
             var playersListTemp : [GKLeaderboard.Entry] = []
             var leaderboardID = ""
             if word != "daily" {
@@ -70,13 +73,18 @@ struct LeaderboardView: View {
             } else {
                 leaderboardID = "daily"
             }
+            // loads all leaderboards for that word, or daily
             let leaderboards = try await GKLeaderboard.loadLeaderboards(IDs: [leaderboardID])
+            print("leaderboards: \(leaderboards)")
+            
             
             if let leaderboard = leaderboards.filter ({ $0.baseLeaderboardID == "\(leaderboardID)" }).first {
+                print("leaderboard: \(leaderboard)")
                 let allPlayers = try await leaderboard.loadEntries(for: .global, timeScope: .allTime, range: NSRange(1...5))
                 
                 if allPlayers.1.count > 0 {
                     for player in allPlayers.1 {
+                        print("player: \(player.player.displayName), score: \(player.score)")
                         playersListTemp.append(player)
                     }
                     

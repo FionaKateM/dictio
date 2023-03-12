@@ -24,7 +24,10 @@ struct DataWords : Codable {
     var words: [String: Word]
 }
 
-func getDailyWord(date: String) -> Word? {
+func getDailyWord(date: String) async -> Word? {
+    
+    // TODO - fix the date issue
+    // Currently saving daily words with date MM/DD/YYYY as string, but using date.now to get it doesn't work because of different default date settings
     if let wordsURL = Bundle.main.url(forResource: "daily-words", withExtension: "json") {
         if let data = try? Data(contentsOf: wordsURL) {
             if let words = parseWordsFrom(json: data) {
@@ -96,14 +99,17 @@ func getWordsOf(length: Int) -> [String] {
 func getPracticeWord() -> Word {
     let words = getWords(fileName: "correct-words")
     if let random = words.randomElement() {
+        
+        // TODO: check not previously played
+        
         return random
     } else {
         print("couldn't get random word")
-        return Word(word: "word", definition: "xxx")
+        return Word(word: "axis", definition: "xxx")
     }
 }
 
-func initialiseGame(date: String?) -> GameSettings {
+func initialiseGame(date: String?) async -> GameSettings {
     var correctWord: Word = Word(word: "", definition: "")
     
     //*** Word selection ***
@@ -112,7 +118,8 @@ func initialiseGame(date: String?) -> GameSettings {
     if let dateID = date {
         print("getting daily word")
         // TODO: add check that they have not already played the daily game
-        if let word = getDailyWord(date: dateID) {
+        if let word = await getDailyWord(date: dateID) {
+            print("correct word is: \(word)")
             correctWord = word
         }
         
@@ -142,12 +149,16 @@ func initialiseGame(date: String?) -> GameSettings {
     return gameSettings
 }
 
-
-
-
-
-
-
+func formatDate(_ date: Date) -> String {
+    let formattedDate = date.formatted(
+        Date.FormatStyle()
+            .locale(Locale(identifier: "en_US"))
+            .month(.defaultDigits)
+            .day(.defaultDigits)
+            .year()
+    )
+    return formattedDate
+}
 
 
 
